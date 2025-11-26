@@ -34,6 +34,30 @@ export default function Home() {
               </a>
               —aiming to advance research in embodied artificial intelligence across the region.
             </p>
+
+            <div className="mt-12 pt-8 border-t border-border">
+              <h2 className="font-sans text-lg font-medium text-foreground mb-4">Get in Touch</h2>
+              <p className="max-w-2xl font-serif text-base leading-relaxed text-muted-foreground">
+                I'm always open to meeting people passionate about AI, robotics, and mathematics. Whether you're
+                interested in collaboration, research discussions, or just want to connect—feel free to reach out via{" "}
+                <a
+                  href="mailto:leonardo.perezn@pucp.edu.pe"
+                  className="text-foreground underline underline-offset-4 hover:text-muted-foreground transition-colors"
+                >
+                  email
+                </a>{" "}
+                or{" "}
+                <a
+                  href="https://x.com/keverwww"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-foreground underline underline-offset-4 hover:text-muted-foreground transition-colors"
+                >
+                  X (Twitter)
+                </a>
+                .
+              </p>
+            </div>
           </div>
         </section>
       </main>
