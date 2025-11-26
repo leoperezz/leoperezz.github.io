@@ -71,6 +71,36 @@ $$
 
 ---
 
+## Reinforcement Learning Demos
+
+Here are some reinforcement learning agents trained using PPO:
+
+### CartPole
+
+![CartPole balancing agent](https://res.cloudinary.com/dtpiuha91/video/upload/v1742525560/cartpole_f7bjc6.mp4)
+
+### LunarLander
+
+![Lunar Lander autonomous landing](https://res.cloudinary.com/dtpiuha91/video/upload/v1742525561/lunarlander_qre1sy.mp4)
+
+### BipedalWalker
+
+![Bipedal Walker learning to walk](https://res.cloudinary.com/dtpiuha91/video/upload/v1742525563/bipedalwalker_dhtlzz.mp4)
+
+### CarRacing
+
+![Car Racing agent navigating track](https://res.cloudinary.com/dtpiuha91/video/upload/v1742525567/carracing_ftrdav.mp4)
+
+---
+
+## PPO Loss Function Analysis
+
+The following image shows the loss function behavior as a function of the probability ratio:
+
+![Loss Function vs Ratio in function of the advantage](https://res.cloudinary.com/dtpiuha91/image/upload/v1742526789/1_vtqzsk.png)
+
+---
+
 ## Code Example
 
 Here's a simple implementation of a neural network layer in Python:
@@ -194,7 +224,6 @@ export default async function BlogPostPage({ params }: BlogPageProps) {
   const { slug } = await params
   const content = sampleContent
 
-  // Extract title from first heading
   const titleMatch = content.match(/^#\s+(.+)$/m)
   const title = titleMatch
     ? titleMatch[1]

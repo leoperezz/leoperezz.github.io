@@ -2,8 +2,6 @@ import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
 
 export default function Home() {
-  const skills = ["Python", "C++", "PyTorch", "ROS", "LaTeX", "MATLAB", "Linear Algebra", "Topology"]
-
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
@@ -23,17 +21,19 @@ export default function Home() {
               theory, and empirical robotics.
             </p>
 
+            {/* // Added NONHUMAN link, removed Technical Proficiencies */}
             <p className="max-w-2xl font-serif text-base leading-relaxed text-foreground font-medium">
-              I'm currently founding one of the first Embodied AI laboratories in Latin America, aiming to advance
-              research in embodied artificial intelligence across the region.
+              I'm currently founding one of the first Embodied AI laboratories in Latin America:{" "}
+              <a
+                href="https://www.nonhuman.site"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline underline-offset-4 hover:text-muted-foreground transition-colors"
+              >
+                NONHUMAN
+              </a>
+              —aiming to advance research in embodied artificial intelligence across the region.
             </p>
-          </div>
-
-          <div className="mt-12">
-            <h2 className="font-sans text-sm font-semibold uppercase tracking-wider text-muted-foreground">
-              Technical Proficiencies
-            </h2>
-            <p className="mt-4 font-mono text-sm text-foreground">{skills.join(" · ")}</p>
           </div>
         </section>
       </main>

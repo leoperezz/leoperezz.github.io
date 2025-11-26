@@ -1,43 +1,13 @@
 import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
-import { ExternalLink } from "lucide-react"
-
-interface Project {
-  title: string
-  description: string
-  tags: string[]
-  link: string
-  linkLabel: string
-}
-
-const projects: Project[] = [
-  {
-    title: "Topological Methods in Robot Motion Planning",
-    description:
-      "Investigating the application of algebraic topology to configuration spaces, with implications for motion planning algorithms in high-dimensional robotic systems.",
-    tags: ["Topology", "Motion Planning", "Configuration Spaces"],
-    link: "#",
-    linkLabel: "View PDF",
-  },
-  {
-    title: "Neural Implicit Representations for 3D Scene Understanding",
-    description:
-      "Exploring coordinate-based neural networks for encoding spatial information, with applications to robot perception and manipulation tasks.",
-    tags: ["Computer Vision", "Neural Networks", "3D Reconstruction"],
-    link: "#",
-    linkLabel: "GitHub",
-  },
-  {
-    title: "Geometric Control on Lie Groups",
-    description:
-      "Studying the mathematical foundations of geometric control theory and its applications to autonomous systems operating on non-Euclidean manifolds.",
-    tags: ["Control Theory", "Lie Groups", "Differential Geometry"],
-    link: "#",
-    linkLabel: "View PDF",
-  },
-]
+import { EmptyState } from "@/components/empty-state"
+import { projects } from "@/lib/content"
+import Link from "next/link"
+import { ArrowRight } from "lucide-react"
 
 export default function ProjectsPage() {
+  const hasProjects = projects.length > 0
+
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
@@ -48,38 +18,53 @@ export default function ProjectsPage() {
             Selected projects and ongoing investigations.
           </p>
 
-          <div className="mt-10 grid gap-6">
-            {projects.map((project) => (
-              <article
-                key={project.title}
-                className="group rounded-lg border border-border/60 bg-card p-6 transition-colors hover:border-border"
-              >
-                <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
-                  <div className="space-y-3">
-                    <h2 className="font-sans text-lg font-medium text-foreground">{project.title}</h2>
-                    <p className="font-serif text-sm leading-relaxed text-muted-foreground">{project.description}</p>
-                    <div className="flex flex-wrap gap-2">
-                      {project.tags.map((tag) => (
-                        <span
-                          key={tag}
-                          className="rounded-sm bg-muted px-2 py-1 font-mono text-xs text-muted-foreground"
-                        >
-                          {tag}
-                        </span>
-                      ))}
+          {hasProjects ? (
+            <div className="mt-10 grid gap-6">
+              {projects.map((project) => (
+                <article
+                  key={project.slug || project.title}
+                  className="group rounded-lg border border-border/60 bg-card p-6 transition-colors hover:border-border"
+                >
+                  <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+                    <div className="space-y-3">
+                      <h2 className="font-sans text-lg font-medium text-foreground">{project.title}</h2>
+                      <p className="font-serif text-sm leading-relaxed text-muted-foreground">{project.description}</p>
+                      <div className="flex flex-wrap gap-2">
+                        {project.tags.map((tag) => (
+                          <span
+                            key={tag}
+                            className="rounded-sm bg-muted px-2 py-1 font-mono text-xs text-muted-foreground"
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
                     </div>
+                    {/* // Link to project detail page if slug exists */}
+                    {project.slug ? (
+                      <Link
+                        href={`/projects/${project.slug}`}
+                        className="inline-flex shrink-0 items-center gap-1.5 font-sans text-sm font-medium text-foreground transition-colors hover:text-muted-foreground"
+                      >
+                        Read more
+                        <ArrowRight className="h-3.5 w-3.5" />
+                      </Link>
+                    ) : (
+                      <a
+                        href={project.link}
+                        className="inline-flex shrink-0 items-center gap-1.5 font-sans text-sm font-medium text-foreground transition-colors hover:text-muted-foreground"
+                      >
+                        {project.linkLabel}
+                        <ArrowRight className="h-3.5 w-3.5" />
+                      </a>
+                    )}
                   </div>
-                  <a
-                    href={project.link}
-                    className="inline-flex shrink-0 items-center gap-1.5 font-sans text-sm font-medium text-foreground transition-colors hover:text-muted-foreground"
-                  >
-                    {project.linkLabel}
-                    <ExternalLink className="h-3.5 w-3.5" />
-                  </a>
-                </div>
-              </article>
-            ))}
-          </div>
+                </article>
+              ))}
+            </div>
+          ) : (
+            <EmptyState type="projects" />
+          )}
         </section>
       </main>
       <Footer />
