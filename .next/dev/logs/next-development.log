@@ -1,0 +1,24 @@
+[00:00:00.730] Server  LOG     
+[00:00:00.731] Server  LOG        We detected TypeScript in your project and reconfigured your tsconfig.json file for you.
+[00:00:00.731] Server  LOG        The following suggested values were added to your tsconfig.json. These values can be changed to fit your project's needs:
+
+[00:00:00.731] Server  LOG        	- include was updated to add '.next/dev/types/**/*.ts'
+[00:00:00.731] Server  LOG     
+[00:00:00.731] Server  LOG        The following mandatory changes were made to your tsconfig.json:
+
+[00:00:00.731] Server  LOG        	- jsx was set to react-jsx (next.js uses the React automatic runtime)
+[00:00:00.731] Server  LOG     
+[00:00:00.867] Server  LOG      ✓ Ready in 590ms
+[00:00:21.805] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:21.945] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:00:21.945] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:00:21.945] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1764133388860}
+[00:00:44.964] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/blogs color: rgb(120, 120, 120) color: inherit {"dp":"/blogs","o":"http://localhost:3000/blogs","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1764133411875}
+[00:00:48.723] Server  LOG      ○ Compiling /blogs/[slug] ...
+[00:00:50.207] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/blogs/neural-networks-math color: rgb(120, 120, 120) color: inherit {"dp":"/blogs/[slug]","o":"http://localhost:3000/blogs/neural-networks-math","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1764133417015}
+[00:00:57.482] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/blogs color: rgb(120, 120, 120) color: inherit {"dp":"/blogs","o":"http://localhost:3000/blogs","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1764133424396}
+[00:00:58.415] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/blogs/embodied-ai-future color: rgb(120, 120, 120) color: inherit {"dp":"/blogs/[slug]","o":"http://localhost:3000/blogs/embodied-ai-future","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1764133425328}
+[00:01:04.074] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/blogs color: rgb(120, 120, 120) color: inherit {"dp":"/blogs","o":"http://localhost:3000/blogs","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1764133430986}
+[00:01:04.961] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/blogs/ai-lab-latam color: rgb(120, 120, 120) color: inherit {"dp":"/blogs/[slug]","o":"http://localhost:3000/blogs/ai-lab-latam","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1764133431874}
+[00:01:08.485] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/projects color: rgb(120, 120, 120) color: inherit {"dp":"/projects","o":"http://localhost:3000/projects","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1764133435395}
+[00:01:12.027] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/projects/topological-motion-planning color: rgb(120, 120, 120) color: inherit {"dp":"/projects/[slug]","o":"http://localhost:3000/projects/topological-motion-planning","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1764133438939}

@@ -1,3 +1,6 @@
+import fs from "fs/promises"
+import path from "path"
+
 // Content types for blogs, projects, notes, and exercises
 
 export interface BlogPost {
@@ -165,4 +168,71 @@ export function formatDate(dateString: string, format: "long" | "short" = "long"
     month: "long",
     day: "numeric",
   })
+}
+
+// Get the content directory path
+function getContentDirectory() {
+  return path.join(process.cwd(), "content")
+}
+
+// Read markdown content from a file
+export async function getMarkdownContent(
+  type: "blogs" | "notes" | "projects" | "exercises",
+  slug: string
+): Promise<string | null> {
+  try {
+    const filePath = path.join(getContentDirectory(), type, `${slug}.md`)
+    const content = await fs.readFile(filePath, "utf-8")
+    return content
+  } catch {
+    return null
+  }
+}
+
+// Get blog post with content
+export async function getBlogPost(slug: string): Promise<(BlogPost & { content: string }) | null> {
+  const post = blogPosts.find((p) => p.slug === slug)
+  if (!post) return null
+
+  const content = await getMarkdownContent("blogs", slug)
+  return {
+    ...post,
+    content: content || "",
+  }
+}
+
+// Get note with content
+export async function getNote(slug: string): Promise<(Note & { content: string }) | null> {
+  const note = notes.find((n) => n.slug === slug)
+  if (!note) return null
+
+  const content = await getMarkdownContent("notes", slug)
+  return {
+    ...note,
+    content: content || "",
+  }
+}
+
+// Get project with content
+export async function getProject(slug: string): Promise<(Project & { content: string }) | null> {
+  const project = projects.find((p) => p.slug === slug)
+  if (!project) return null
+
+  const content = await getMarkdownContent("projects", slug)
+  return {
+    ...project,
+    content: content || "",
+  }
+}
+
+// Get exercise with content
+export async function getExercise(slug: string): Promise<(Exercise & { content: string }) | null> {
+  const exercise = exercises.find((e) => e.slug === slug)
+  if (!exercise) return null
+
+  const content = await getMarkdownContent("exercises", slug)
+  return {
+    ...exercise,
+    content: content || "",
+  }
 }
