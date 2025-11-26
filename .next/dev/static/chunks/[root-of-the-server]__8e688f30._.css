@@ -373,6 +373,7 @@
       --tw-backdrop-opacity: initial;
       --tw-backdrop-saturate: initial;
       --tw-backdrop-sepia: initial;
+      --tw-duration: initial;
       --tw-ease: initial;
       --tw-animation-delay: 0s;
       --tw-animation-direction: normal;
@@ -395,6 +396,8 @@
 
 @layer theme {
   :root, :host {
+    --font-sans: "Inter", "Inter Fallback", system-ui, sans-serif;
+    --font-serif: "Merriweather", "Georgia", serif;
     --color-red-400: #ff6568;
     --color-red-500: #fb2c36;
     --color-red-600: #e40014;
@@ -966,6 +969,10 @@
     cursor: pointer;
   }
 
+  .scroll-mt-24 {
+    scroll-margin-top: calc(var(--spacing) * 24);
+  }
+
   .list-decimal {
     list-style-type: decimal;
   }
@@ -1070,6 +1077,12 @@
     :where(.divide-border\/40 > :not(:last-child)) {
       border-color: color-mix(in oklab, var(--border) 40%, transparent);
     }
+  }
+
+  .truncate {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
   }
 
   .overflow-hidden {
@@ -1503,6 +1516,11 @@
     transition-duration: var(--tw-duration, var(--default-transition-duration));
   }
 
+  .duration-500 {
+    --tw-duration: .5s;
+    transition-duration: .5s;
+  }
+
   .ease-out {
     --tw-ease: var(--ease-out);
     transition-timing-function: var(--ease-out);
@@ -1890,6 +1908,251 @@
   filter: invert(.9) hue-rotate(180deg);
 }
 
+.citation-link {
+  cursor: pointer;
+  vertical-align: middle;
+  font-family: var(--font-sans);
+  background: none;
+  border: none;
+  justify-content: center;
+  align-items: center;
+  margin: 0 .2em;
+  padding: 0;
+  display: inline-flex;
+}
+
+.citation-badge {
+  color: #f9f8f6;
+  color: lab(97.6924% .0796616 1.13988);
+  background: #433830;
+  background: lab(24.552% 3.59103 6.82721);
+  border-radius: 50%;
+  justify-content: center;
+  align-items: center;
+  width: 1.35rem;
+  height: 1.35rem;
+  font-size: .7rem;
+  font-weight: 600;
+  line-height: 1;
+  transition: all .2s;
+  display: inline-flex;
+}
+
+.citation-link:hover .citation-badge {
+  background: #291f18;
+  background: lab(12.9465% 3.69321 6.93115);
+  transform: scale(1.1);
+}
+
+.dark .citation-badge {
+  color: #0a0a0a;
+  background: #a9afb4;
+  background: lab(70.9912% -1.08325 -3.56553);
+}
+
+.dark .citation-link:hover .citation-badge {
+  background: #c9ced4;
+  background: lab(82.5914% -1.08778 -3.56801);
+}
+
+.citation-tooltip {
+  animation: .15s ease-out tooltip-fade-in;
+}
+
+@keyframes tooltip-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.citation-tooltip-content {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: .5rem;
+  align-items: flex-start;
+  gap: .75rem;
+  min-width: 200px;
+  max-width: 320px;
+  padding: .875rem 1rem;
+  display: flex;
+  box-shadow: 0 4px 20px #0000001f, 0 2px 8px #00000014;
+}
+
+.dark .citation-tooltip-content {
+  box-shadow: 0 4px 20px #0006, 0 2px 8px #0000004d;
+}
+
+.citation-tooltip-number {
+  width: 1.5rem;
+  height: 1.5rem;
+  font-size: .75rem;
+  font-weight: 600;
+  font-family: var(--font-sans);
+  color: #f9f8f6;
+  color: lab(97.6924% .0796616 1.13988);
+  background: #433830;
+  background: lab(24.552% 3.59103 6.82721);
+  border-radius: 50%;
+  flex-shrink: 0;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.dark .citation-tooltip-number {
+  color: #0a0a0a;
+  background: #a9afb4;
+  background: lab(70.9912% -1.08325 -3.56553);
+}
+
+.citation-tooltip-text {
+  flex-direction: column;
+  gap: .375rem;
+  min-width: 0;
+  display: flex;
+}
+
+.citation-tooltip-title {
+  font-family: var(--font-serif);
+  color: var(--foreground);
+  font-size: .875rem;
+  font-weight: 500;
+  line-height: 1.4;
+  display: block;
+}
+
+.citation-tooltip-hint {
+  font-family: var(--font-sans);
+  color: var(--muted-foreground);
+  opacity: .7;
+  font-size: .65rem;
+  font-style: italic;
+  font-weight: 400;
+  display: block;
+}
+
+.citation-tooltip-link {
+  font-family: var(--font-sans);
+  color: #433830;
+  color: lab(24.552% 3.59103 6.82721);
+  margin-top: .125rem;
+  font-size: .75rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color .15s;
+  display: block;
+}
+
+.citation-tooltip-link:hover {
+  color: #291f18;
+  color: lab(12.9465% 3.69321 6.93115);
+  text-decoration: underline;
+}
+
+.dark .citation-tooltip-link {
+  color: #9a9fa5;
+  color: lab(65.191% -1.08051 -3.56405);
+}
+
+.dark .citation-tooltip-link:hover {
+  color: #c9ced4;
+  color: lab(82.5914% -1.08778 -3.56801);
+}
+
+.references-header {
+  border-bottom: 1px solid var(--border);
+  padding-bottom: .5rem;
+}
+
+.references-list {
+  counter-reset: reference-counter;
+  margin-top: 1rem !important;
+  margin-left: 0 !important;
+  padding-left: 0 !important;
+  list-style: none !important;
+}
+
+.references-list .reference-item {
+  counter-increment: reference-counter;
+  border-left: 2px solid #0000;
+  padding-top: .5rem;
+  padding-bottom: .5rem;
+  padding-left: 2rem;
+  transition: all .2s;
+  position: relative;
+}
+
+.references-list .reference-item:before {
+  content: "[" counter(reference-counter) "]";
+  font-size: .8rem;
+  font-weight: 500;
+  font-family: var(--font-sans);
+  color: #51565b;
+  color: lab(36.1898% -1.05752 -3.55195);
+  min-width: 1.75rem;
+  position: absolute;
+  top: .5rem;
+  left: 0;
+}
+
+.references-list .reference-item:hover {
+  border-left-color: #43383080;
+  border-left-color: lab(24.552% 3.59103 6.82721 / .5);
+  padding-left: 2.25rem;
+}
+
+.dark .references-list .reference-item:before {
+  color: #6f7274;
+  color: lab(47.7959% -.547767 -1.78611);
+}
+
+.dark .references-list .reference-item:hover {
+  border-left-color: #a9afb480;
+  border-left-color: lab(70.9912% -1.08325 -3.56553 / .5);
+}
+
+.citation-highlight {
+  animation: 2s ease-out citation-pulse;
+}
+
+@keyframes citation-pulse {
+  0% {
+    background: #43383026;
+    background: lab(24.552% 3.59103 6.82721 / .15);
+    border-left-color: #433830;
+    border-left-color: lab(24.552% 3.59103 6.82721);
+  }
+
+  100% {
+    background: none;
+    border-left-color: #0000;
+  }
+}
+
+.dark .citation-highlight {
+  animation: 2s ease-out citation-pulse-dark;
+}
+
+@keyframes citation-pulse-dark {
+  0% {
+    background: #a9afb426;
+    background: lab(70.9912% -1.08325 -3.56553 / .15);
+    border-left-color: #a9afb4;
+    border-left-color: lab(70.9912% -1.08325 -3.56553);
+  }
+
+  100% {
+    background: none;
+    border-left-color: #0000;
+  }
+}
+
 @property --tw-rotate-x {
   syntax: "*";
   inherits: false
@@ -2134,6 +2397,11 @@
 }
 
 @property --tw-backdrop-sepia {
+  syntax: "*";
+  inherits: false
+}
+
+@property --tw-duration {
   syntax: "*";
   inherits: false
 }

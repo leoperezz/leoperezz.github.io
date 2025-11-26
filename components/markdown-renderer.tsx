@@ -1,8 +1,9 @@
 "use client"
 
 import React from "react"
+import { createPortal } from "react-dom"
 
-import { useState, useEffect, useRef, useCallback } from "react"
+import { useState, useEffect, useRef, useCallback, useMemo } from "react"
 import ReactMarkdown from "react-markdown"
 import remarkGfm from "remark-gfm"
 import remarkMath from "remark-math"
@@ -13,6 +14,216 @@ import { Copy, Check, X, ZoomIn, ZoomOut, Move } from "lucide-react"
 interface MarkdownRendererProps {
   content: string
   onCopyAll?: () => void
+}
+
+interface Reference {
+  id: number
+  text: string
+  shortTitle: string
+  url?: string
+}
+
+// Extract short title from reference text (usually in quotes)
+function extractShortTitle(text: string): string {
+  // Try to find title in quotes: "Title" or 'Title' or *Title*
+  const quotedMatch = text.match(/[""]([^""]+)[""]|"([^"]+)"|'([^']+)'|\*([^*]+)\*/)
+  if (quotedMatch) {
+    return quotedMatch[1] || quotedMatch[2] || quotedMatch[3] || quotedMatch[4]
+  }
+  
+  // If no quotes, try to get the first part before a period or comma
+  const firstPart = text.split(/[.,]/)[0]?.trim()
+  if (firstPart && firstPart.length < 80) {
+    return firstPart
+  }
+  
+  // Fallback: truncate if too long
+  return text.length > 60 ? text.substring(0, 57) + "..." : text
+}
+
+// Parse references from the References/Referencias section
+function parseReferences(content: string): Reference[] {
+  const references: Reference[] = []
+  
+  // Match the references section (handles both "References" and "Referencias")
+  const refSectionMatch = content.match(/##\s*(?:References|Referencias)\s*\n([\s\S]*?)(?=\n##|$)/i)
+  if (!refSectionMatch) return references
+  
+  const refSection = refSectionMatch[1]
+  
+  // Match numbered list items with markdown links: "1. [text](url)" or just "1. text"
+  const refPattern = /(\d+)\.\s*(?:\[([^\]]+)\]\(([^)]+)\)|(.+?)(?=\n\d+\.|\n*$))/g
+  let match
+  
+  while ((match = refPattern.exec(refSection)) !== null) {
+    const id = parseInt(match[1], 10)
+    const text = match[2] || match[4]?.trim() || ""
+    const url = match[3] || undefined
+    
+    if (text) {
+      references.push({ 
+        id, 
+        text,
+        shortTitle: extractShortTitle(text),
+        url 
+      })
+    }
+  }
+  
+  return references
+}
+
+// Preprocess content to convert [[n]] citations to a special marker
+function preprocessCitations(content: string): string {
+  // Replace [[n]] with a special marker that won't be affected by markdown parsing
+  return content.replace(/\[\[(\d+)\]\]/g, '⟦cite:$1⟧')
+}
+
+// Citation tooltip component - uses portal to avoid HTML nesting issues
+function CitationTooltip({ 
+  reference, 
+  onClose,
+  position 
+}: { 
+  reference: Reference
+  onClose: () => void
+  position: { x: number; y: number }
+}) {
+  const tooltipRef = useRef<HTMLDivElement>(null)
+  const [mounted, setMounted] = useState(false)
+  const [adjustedPosition, setAdjustedPosition] = useState(position)
+  
+  useEffect(() => {
+    setMounted(true)
+    return () => setMounted(false)
+  }, [])
+  
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (tooltipRef.current && !tooltipRef.current.contains(e.target as Node)) {
+        onClose()
+      }
+    }
+    
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') onClose()
+    }
+    
+    document.addEventListener('mousedown', handleClickOutside)
+    document.addEventListener('keydown', handleEscape)
+    
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+      document.removeEventListener('keydown', handleEscape)
+    }
+  }, [onClose])
+  
+  useEffect(() => {
+    if (tooltipRef.current) {
+      const rect = tooltipRef.current.getBoundingClientRect()
+      const viewportWidth = window.innerWidth
+      const viewportHeight = window.innerHeight
+      
+      let newX = position.x
+      let newY = position.y
+      
+      // Adjust horizontal position
+      if (rect.right > viewportWidth - 16) {
+        newX = viewportWidth - rect.width - 16
+      }
+      if (newX < 16) newX = 16
+      
+      // Adjust vertical position - show above if not enough space below
+      if (rect.bottom > viewportHeight - 16) {
+        newY = position.y - rect.height - 30
+      }
+      
+      setAdjustedPosition({ x: newX, y: newY })
+    }
+  }, [position])
+  
+  const tooltipContent = (
+    <div
+      ref={tooltipRef}
+      className="citation-tooltip"
+      style={{
+        position: 'fixed',
+        left: adjustedPosition.x,
+        top: adjustedPosition.y,
+        zIndex: 9999
+      }}
+    >
+      <div className="citation-tooltip-content">
+        <span className="citation-tooltip-number">{reference.id}</span>
+        <span className="citation-tooltip-text">
+          <span className="citation-tooltip-title">{reference.shortTitle}</span>
+          <span className="citation-tooltip-hint">Full references below</span>
+          {reference.url && (
+            <a 
+              href={reference.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="citation-tooltip-link"
+              onClick={(e) => e.stopPropagation()}
+            >
+              View source →
+            </a>
+          )}
+        </span>
+      </div>
+    </div>
+  )
+  
+  // Use portal to render tooltip at document body level
+  if (!mounted) return null
+  return createPortal(tooltipContent, document.body)
+}
+
+// Citation link component with tooltip on click
+function CitationLink({ refId, references }: { refId: number; references: Reference[] }) {
+  const reference = references.find(r => r.id === refId)
+  const [showTooltip, setShowTooltip] = useState(false)
+  const [tooltipPosition, setTooltipPosition] = useState({ x: 0, y: 0 })
+  const buttonRef = useRef<HTMLButtonElement>(null)
+  
+  const handleClick = (e: React.MouseEvent) => {
+    e.preventDefault()
+    e.stopPropagation()
+    
+    if (buttonRef.current) {
+      const rect = buttonRef.current.getBoundingClientRect()
+      setTooltipPosition({
+        x: rect.left,
+        y: rect.bottom + 8
+      })
+    }
+    
+    setShowTooltip(!showTooltip)
+  }
+  
+  if (!reference) {
+    return <sup className="citation-badge">{refId}</sup>
+  }
+  
+  return (
+    <>
+      <button
+        ref={buttonRef}
+        onClick={handleClick}
+        className="citation-link"
+        aria-label={`Reference ${refId}: ${reference.shortTitle}`}
+      >
+        <span className="citation-badge">{refId}</span>
+      </button>
+      {showTooltip && (
+        <CitationTooltip
+          reference={reference}
+          onClose={() => setShowTooltip(false)}
+          position={tooltipPosition}
+        />
+      )}
+    </>
+  )
 }
 
 function CopyButton({ text }: { text: string }) {
@@ -257,12 +468,13 @@ function MermaidDiagram({ chart }: { chart: string }) {
 }
 
 function MediaElement({ src, alt }: { src: string; alt: string }) {
-  const isVideo = src.includes(".mp4") || src.includes(".webm") || src.includes(".mov") || src.includes("/video/")
+  const srcString = typeof src === "string" ? src : ""
+  const isVideo = srcString.includes(".mp4") || srcString.includes(".webm") || srcString.includes(".mov") || srcString.includes("/video/")
 
   if (isVideo) {
     return (
       <figure className="my-6">
-        <video src={src} controls autoPlay loop muted playsInline className="w-full rounded-lg border border-border">
+        <video src={srcString} controls autoPlay loop muted playsInline className="w-full rounded-lg border border-border">
           Your browser does not support the video tag.
         </video>
         {alt && <figcaption className="mt-2 text-center font-serif text-sm text-muted-foreground">{alt}</figcaption>}
@@ -272,7 +484,7 @@ function MediaElement({ src, alt }: { src: string; alt: string }) {
 
   return (
     <figure className="my-6">
-      <img src={src || "/placeholder.svg"} alt={alt || ""} className="w-full rounded-lg border border-border" />
+      <img src={srcString || "/placeholder.svg"} alt={alt || ""} className="w-full rounded-lg border border-border" />
       {alt && <figcaption className="mt-2 text-center font-serif text-sm text-muted-foreground">{alt}</figcaption>}
     </figure>
   )
@@ -306,7 +518,44 @@ function hasMediaContent(children: React.ReactNode): boolean {
   })
 }
 
+// Helper to render text with citation links
+function renderTextWithCitations(text: string, references: Reference[]): React.ReactNode {
+  const parts = text.split(/(⟦cite:\d+⟧)/g)
+  
+  return parts.map((part, index) => {
+    const citationMatch = part.match(/⟦cite:(\d+)⟧/)
+    if (citationMatch) {
+      const refId = parseInt(citationMatch[1], 10)
+      return <CitationLink key={index} refId={refId} references={references} />
+    }
+    return part
+  })
+}
+
+// Recursively process children to handle citations
+function processChildren(children: React.ReactNode, references: Reference[]): React.ReactNode {
+  return React.Children.map(children, (child) => {
+    if (typeof child === 'string') {
+      return renderTextWithCitations(child, references)
+    }
+    if (React.isValidElement(child)) {
+      const childProps = child.props as { children?: React.ReactNode }
+      if (childProps.children) {
+        return React.cloneElement(child as React.ReactElement<any>, {
+          ...childProps,
+          children: processChildren(childProps.children, references)
+        })
+      }
+    }
+    return child
+  })
+}
+
 export function MarkdownRenderer({ content }: MarkdownRendererProps) {
+  // Parse references and preprocess citations
+  const references = useMemo(() => parseReferences(content), [content])
+  const processedContent = useMemo(() => preprocessCitations(content), [content])
+  
   return (
     <div className="prose-custom">
       <ReactMarkdown
@@ -315,14 +564,40 @@ export function MarkdownRenderer({ content }: MarkdownRendererProps) {
         components={{
           h1: ({ children }) => (
             <h1 className="mb-6 mt-10 font-sans text-3xl font-semibold tracking-tight text-foreground first:mt-0">
-              {children}
+              {processChildren(children, references)}
             </h1>
           ),
-          h2: ({ children }) => (
-            <h2 className="mb-4 mt-8 font-sans text-2xl font-semibold tracking-tight text-foreground">{children}</h2>
+          h2: ({ children }) => {
+            const text = String(children)
+            // Check if this is the references section
+            const isReferencesHeader = /references|referencias/i.test(text)
+            
+            if (isReferencesHeader) {
+              return (
+                <h2 
+                  className="references-header mb-4 mt-8 font-sans text-2xl font-semibold tracking-tight text-foreground"
+                  data-references-section="true"
+                >
+                  {children}
+                </h2>
+              )
+            }
+            return (
+              <h2 className="mb-4 mt-8 font-sans text-2xl font-semibold tracking-tight text-foreground">
+                {processChildren(children, references)}
+              </h2>
+            )
+          },
+          h3: ({ children }) => (
+            <h3 className="mb-3 mt-6 font-sans text-xl font-medium text-foreground">
+              {processChildren(children, references)}
+            </h3>
           ),
-          h3: ({ children }) => <h3 className="mb-3 mt-6 font-sans text-xl font-medium text-foreground">{children}</h3>,
-          h4: ({ children }) => <h4 className="mb-2 mt-4 font-sans text-lg font-medium text-foreground">{children}</h4>,
+          h4: ({ children }) => (
+            <h4 className="mb-2 mt-4 font-sans text-lg font-medium text-foreground">
+              {processChildren(children, references)}
+            </h4>
+          ),
           p: ({ children, node }) => {
             // Check if any child is an image element
             const hasImage = node?.children?.some((child: any) => child.type === "element" && child.tagName === "img")
@@ -331,7 +606,11 @@ export function MarkdownRenderer({ content }: MarkdownRendererProps) {
               return <div className="mb-4">{children}</div>
             }
 
-            return <p className="mb-4 font-serif text-base leading-relaxed text-foreground/90">{children}</p>
+            return (
+              <p className="mb-4 font-serif text-base leading-relaxed text-foreground/90">
+                {processChildren(children, references)}
+              </p>
+            )
           },
           a: ({ href, children }) => (
             <a
@@ -346,13 +625,58 @@ export function MarkdownRenderer({ content }: MarkdownRendererProps) {
           ul: ({ children }) => (
             <ul className="mb-4 ml-6 list-disc space-y-2 font-serif text-base text-foreground/90">{children}</ul>
           ),
-          ol: ({ children }) => (
-            <ol className="mb-4 ml-6 list-decimal space-y-2 font-serif text-base text-foreground/90">{children}</ol>
-          ),
-          li: ({ children }) => <li className="leading-relaxed">{children}</li>,
+          ol: ({ children, node, start }) => {
+            // Check if this is the references list by looking at preceding sibling
+            // We detect this by checking if the ol comes right after an h2 with references
+            const parent = node?.position
+            const isRefList = node?.position && content.slice(0, node.position.start.offset || 0).match(/##\s*(?:References|Referencias)\s*\n\s*$/i)
+            
+            if (isRefList) {
+              // Render children with proper indices
+              const childArray = React.Children.toArray(children)
+              return (
+                <ol className="references-list mb-4 ml-6 list-decimal space-y-2 font-serif text-base text-foreground/90">
+                  {childArray.map((child, index) => {
+                    if (React.isValidElement(child)) {
+                      return React.cloneElement(child as React.ReactElement<any>, {
+                        'data-ref-index': index + 1,
+                        key: index
+                      })
+                    }
+                    return child
+                  })}
+                </ol>
+              )
+            }
+            return (
+              <ol className="mb-4 ml-6 list-decimal space-y-2 font-serif text-base text-foreground/90">
+                {children}
+              </ol>
+            )
+          },
+          li: ({ children, node, ...props }) => {
+            // Check if this li has a ref index (meaning it's in the references section)
+            const refIndex = (props as any)['data-ref-index']
+            
+            if (refIndex) {
+              return (
+                <li 
+                  id={`ref-${refIndex}`} 
+                  className="reference-item leading-relaxed scroll-mt-24 transition-colors duration-500"
+                >
+                  {children}
+                </li>
+              )
+            }
+            return (
+              <li className="leading-relaxed">
+                {processChildren(children, references)}
+              </li>
+            )
+          },
           blockquote: ({ children }) => (
             <blockquote className="my-6 border-l-2 border-primary/50 pl-6 font-serif italic text-muted-foreground">
-              {children}
+              {processChildren(children, references)}
             </blockquote>
           ),
           code: ({ className, children }) => {
@@ -400,12 +724,20 @@ export function MarkdownRenderer({ content }: MarkdownRendererProps) {
           ),
           td: ({ children }) => <td className="px-4 py-3 text-foreground/90">{children}</td>,
           hr: () => <hr className="my-8 border-border" />,
-          img: ({ src, alt }) => <MediaElement src={src || ""} alt={alt || ""} />,
-          strong: ({ children }) => <strong className="font-semibold text-foreground">{children}</strong>,
-          em: ({ children }) => <em className="italic">{children}</em>,
+          img: ({ src, alt }) => <MediaElement src={typeof src === "string" ? src : ""} alt={alt || ""} />,
+          strong: ({ children }) => (
+            <strong className="font-semibold text-foreground">
+              {processChildren(children, references)}
+            </strong>
+          ),
+          em: ({ children }) => (
+            <em className="italic">
+              {processChildren(children, references)}
+            </em>
+          ),
         }}
       >
-        {content}
+        {processedContent}
       </ReactMarkdown>
     </div>
   )

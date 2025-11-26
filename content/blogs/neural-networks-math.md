@@ -4,7 +4,7 @@ This post explores the fundamental mathematical concepts behind neural networks,
 
 ## Introduction
 
-Neural networks have revolutionized machine learning, but at their core, they're built on elegant mathematical principles. In this article, we'll dive deep into the mathematics that make deep learning possible.
+Neural networks have revolutionized machine learning [[1]], but at their core, they're built on elegant mathematical principles. In this article, we'll dive deep into the mathematics that make deep learning possible.
 
 > "Mathematics is the language in which God has written the universe." — Galileo Galilei
 
@@ -14,7 +14,7 @@ Neural networks have revolutionized machine learning, but at their core, they're
 
 ### Linear Transformations
 
-At each layer, a neural network performs a linear transformation followed by a non-linear activation. The basic operation is:
+At each layer, a neural network performs a linear transformation followed by a non-linear activation [[2]]. The basic operation is:
 
 $$
 \mathbf{z} = \mathbf{W}\mathbf{x} + \mathbf{b}
@@ -27,7 +27,7 @@ Where:
 
 ### Activation Functions
 
-Common activation functions include:
+Common activation functions include [[3]]:
 
 1. **ReLU**: $f(x) = \max(0, x)$
 2. **Sigmoid**: $\sigma(x) = \frac{1}{1 + e^{-x}}$
@@ -38,13 +38,13 @@ Common activation functions include:
 
 ## Gradient Descent and Backpropagation
 
-The learning process relies on minimizing a loss function $\mathcal{L}$ through gradient descent:
+The learning process relies on minimizing a loss function $\mathcal{L}$ through gradient descent [[4]]:
 
 $$
 \theta_{t+1} = \theta_t - \eta \nabla_{\theta} \mathcal{L}(\theta_t)
 $$
 
-The gradient $\nabla \mathcal{L}$ is computed using the **chain rule**:
+The gradient $\nabla \mathcal{L}$ is computed using the **chain rule** [[1]]:
 
 $$
 \frac{\partial \mathcal{L}}{\partial w_{ij}} = \frac{\partial \mathcal{L}}{\partial a_j} \cdot \frac{\partial a_j}{\partial z_j} \cdot \frac{\partial z_j}{\partial w_{ij}}
@@ -107,6 +107,8 @@ graph LR
 
 ## Comparison of Optimizers
 
+Modern optimizers like Adam [[5]] have improved upon basic gradient descent:
+
 | Optimizer | Learning Rate | Momentum | Adaptive | Best For |
 |-----------|--------------|----------|----------|----------|
 | SGD | Fixed | No | No | Simple problems |
@@ -121,9 +123,9 @@ graph LR
 
 Here are the main points to remember:
 
-- Neural networks are **differentiable functions** composed of linear transformations and non-linearities
-- **Backpropagation** efficiently computes gradients using the chain rule
-- **Optimization** algorithms like Adam improve upon basic gradient descent
+- Neural networks are **differentiable functions** composed of linear transformations and non-linearities [[2]]
+- **Backpropagation** efficiently computes gradients using the chain rule [[1]]
+- **Optimization** algorithms like Adam improve upon basic gradient descent [[5]]
 - Understanding the math helps you:
   - Debug training issues
   - Design better architectures
@@ -133,9 +135,9 @@ Here are the main points to remember:
 
 For more on this topic, check out:
 
-- *Deep Learning* by Goodfellow, Bengio, and Courville
-- *Pattern Recognition and Machine Learning* by Bishop
-- [3Blue1Brown's Neural Network Series](https://www.3blue1brown.com/topics/neural-networks)
+- *Deep Learning* by Goodfellow, Bengio, and Courville [[1]]
+- *Pattern Recognition and Machine Learning* by Bishop [[2]]
+- [3Blue1Brown's Neural Network Series](https://www.3blue1brown.com/topics/neural-networks) [[6]]
 
 ---
 
@@ -147,3 +149,13 @@ Understanding these foundations not only makes you a better practitioner but als
 
 *Thanks for reading! Feel free to reach out with questions or comments.*
 
+---
+
+## References
+
+1. [Goodfellow, Ian, Yoshua Bengio, and Aaron Courville. "Deep Learning". MIT Press, 2016.](https://www.deeplearningbook.org/)
+2. [Bishop, Christopher M. "Pattern Recognition and Machine Learning". Springer, 2006.](https://www.microsoft.com/en-us/research/uploads/prod/2006/01/Bishop-Pattern-Recognition-and-Machine-Learning-2006.pdf)
+3. [Nair, Vinod, and Geoffrey E. Hinton. "Rectified Linear Units Improve Restricted Boltzmann Machines". ICML, 2010.](https://www.cs.toronto.edu/~fritz/absps/reluICML.pdf)
+4. [Ruder, Sebastian. "An Overview of Gradient Descent Optimization Algorithms". arXiv, 2016.](https://arxiv.org/abs/1609.04747)
+5. [Kingma, Diederik P., and Jimmy Ba. "Adam: A Method for Stochastic Optimization". ICLR, 2015.](https://arxiv.org/abs/1412.6980)
+6. [Sanderson, Grant. "Neural Networks". 3Blue1Brown, 2017.](https://www.3blue1brown.com/topics/neural-networks)
