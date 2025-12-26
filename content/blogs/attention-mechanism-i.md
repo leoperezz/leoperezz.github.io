@@ -201,7 +201,7 @@ z = z/np.sqrt(d_k)
 
 Note that now, regardless of the size of dimension $d_k$, the norm of the Jacobian matrix remains stable and uniform without decay.
 
-## Attention Mechanism
+## Attention
 
 Now that we understand the multiplication of matrices $Q$ and $K$, the effect of normalization by its dimension $d_k$ and its implications when using $softmax$, we finally arrive at the question: why is it called an attention mechanism?
 
@@ -438,8 +438,6 @@ S_{EI} & S_{EP} & -\infty & S_{EE}
 $$
 
 Where the $-\infty$ blocks ensure that information does not flow where the model design prohibits it (for example, that images do not attend to future actions or that the expert ignores intermediate FAST tokens).
-
-### Attention Flow Diagram
 
 ```mermaid
 graph TD

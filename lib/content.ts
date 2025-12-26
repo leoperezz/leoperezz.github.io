@@ -40,10 +40,11 @@ export interface Exercise {
 // Sample blog posts - add your content here
 export const blogPosts: BlogPost[] = [
   {
-    title: "Attention Mechanism I",
-    excerpt: "Exploring the attention mechanism in neural networks, and its applications in natural language processing and computer vision. Focusing on the mechanism of attention in 'Attention Is All You Need' paper.",
-    date: "2024-01-12",
-    slug: "attention-mechanism-i",
+    title: "Proximal Policy Optimization",
+    excerpt:
+      "Explaining the Proximal Policy Optimization algorithm and its applications in reinforcement learning.",
+    date: "2024-02-12",
+    slug: "proximal-policy-optimization",
   },
   {
     title: "Policy Gradient Theorem",
@@ -53,17 +54,11 @@ export const blogPosts: BlogPost[] = [
     slug: "policy-gradient-theorem",
   },
   {
-    title: "Why Embodied AI is the Future of Robotics",
-    excerpt: "Reflections on why embodied intelligence represents a paradigm shift in how we think about AI.",
-    date: "2024-10-15",
-    slug: "embodied-ai-future",
-  },
-  {
-    title: "Building an AI Lab in Latin America",
-    excerpt: "The challenges and opportunities of creating AI research infrastructure in the region.",
-    date: "2024-09-08",
-    slug: "ai-lab-latam",
-  },
+    title: "Attention Mechanism I",
+    excerpt: "Exploring the attention mechanism in neural networks, and its applications in natural language processing and computer vision. Focusing on the mechanism of attention in 'Attention Is All You Need' paper.",
+    date: "2024-01-12",
+    slug: "attention-mechanism-i",
+  }
 ]
 
 // Sample projects - add your content here

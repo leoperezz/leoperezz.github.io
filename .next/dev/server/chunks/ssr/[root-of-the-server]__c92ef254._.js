@@ -983,6 +983,15 @@ function processChildren(children, references) {
         return child;
     });
 }
+// Generate ID from header text
+function generateHeaderId(text) {
+    return text.toLowerCase().replace(/\*\*/g, '') // Remove bold
+    .replace(/\*/g, '') // Remove italic
+    .replace(/`/g, '') // Remove code
+    .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1') // Convert links to text
+    .replace(/⟦cite:\d+⟧/g, '') // Remove citation markers
+    .replace(/[^a-z0-9\s-]/g, '').replace(/\s+/g, '-').replace(/-+/g, '-').trim();
+}
 function MarkdownRenderer({ content }) {
     // Parse references and preprocess citations
     const references = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useMemo"])(()=>parseReferences(content), [
@@ -1002,54 +1011,72 @@ function MarkdownRenderer({ content }) {
                 __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$rehype$2d$katex$2f$lib$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"]
             ],
             components: {
-                h1: ({ children })=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
-                        className: "mb-6 mt-10 font-sans text-3xl font-semibold tracking-tight text-foreground first:mt-0",
+                h1: ({ children })=>{
+                    const text = String(children);
+                    const id = generateHeaderId(text);
+                    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
+                        id: id,
+                        className: "mb-6 mt-10 font-sans text-3xl font-semibold tracking-tight text-foreground first:mt-0 scroll-mt-24",
                         children: processChildren(children, references)
                     }, void 0, false, {
                         fileName: "[project]/components/markdown-renderer.tsx",
-                        lineNumber: 566,
-                        columnNumber: 13
-                    }, void 0),
+                        lineNumber: 584,
+                        columnNumber: 15
+                    }, void 0);
+                },
                 h2: ({ children })=>{
                     const text = String(children);
+                    const id = generateHeaderId(text);
                     // Check if this is the references section
                     const isReferencesHeader = /references|referencias/i.test(text);
                     if (isReferencesHeader) {
                         return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
-                            className: "references-header mb-4 mt-8 font-sans text-2xl font-semibold tracking-tight text-foreground",
+                            id: id,
+                            className: "references-header mb-4 mt-8 font-sans text-2xl font-semibold tracking-tight text-foreground scroll-mt-24",
                             "data-references-section": "true",
                             children: children
                         }, void 0, false, {
                             fileName: "[project]/components/markdown-renderer.tsx",
-                            lineNumber: 577,
+                            lineNumber: 597,
                             columnNumber: 17
                         }, void 0);
                     }
                     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
-                        className: "mb-4 mt-8 font-sans text-2xl font-semibold tracking-tight text-foreground",
+                        id: id,
+                        className: "mb-4 mt-8 font-sans text-2xl font-semibold tracking-tight text-foreground scroll-mt-24",
                         children: processChildren(children, references)
                     }, void 0, false, {
                         fileName: "[project]/components/markdown-renderer.tsx",
-                        lineNumber: 586,
+                        lineNumber: 607,
                         columnNumber: 15
                     }, void 0);
                 },
-                h3: ({ children })=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
-                        className: "mb-3 mt-6 font-sans text-xl font-medium text-foreground",
+                h3: ({ children })=>{
+                    const text = String(children);
+                    const id = generateHeaderId(text);
+                    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
+                        id: id,
+                        className: "mb-3 mt-6 font-sans text-xl font-medium text-foreground scroll-mt-24",
                         children: processChildren(children, references)
                     }, void 0, false, {
                         fileName: "[project]/components/markdown-renderer.tsx",
-                        lineNumber: 592,
-                        columnNumber: 13
-                    }, void 0),
-                h4: ({ children })=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h4", {
-                        className: "mb-2 mt-4 font-sans text-lg font-medium text-foreground",
+                        lineNumber: 616,
+                        columnNumber: 15
+                    }, void 0);
+                },
+                h4: ({ children })=>{
+                    const text = String(children);
+                    const id = generateHeaderId(text);
+                    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h4", {
+                        id: id,
+                        className: "mb-2 mt-4 font-sans text-lg font-medium text-foreground scroll-mt-24",
                         children: processChildren(children, references)
                     }, void 0, false, {
                         fileName: "[project]/components/markdown-renderer.tsx",
-                        lineNumber: 597,
-                        columnNumber: 13
-                    }, void 0),
+                        lineNumber: 625,
+                        columnNumber: 15
+                    }, void 0);
+                },
                 p: ({ children, node })=>{
                     // Check if any child is an image element
                     const hasImage = node?.children?.some((child)=>child.type === "element" && child.tagName === "img");
@@ -1059,7 +1086,7 @@ function MarkdownRenderer({ content }) {
                             children: children
                         }, void 0, false, {
                             fileName: "[project]/components/markdown-renderer.tsx",
-                            lineNumber: 606,
+                            lineNumber: 635,
                             columnNumber: 22
                         }, void 0);
                     }
@@ -1068,7 +1095,7 @@ function MarkdownRenderer({ content }) {
                         children: processChildren(children, references)
                     }, void 0, false, {
                         fileName: "[project]/components/markdown-renderer.tsx",
-                        lineNumber: 610,
+                        lineNumber: 639,
                         columnNumber: 15
                     }, void 0);
                 },
@@ -1080,7 +1107,7 @@ function MarkdownRenderer({ content }) {
                         children: children
                     }, void 0, false, {
                         fileName: "[project]/components/markdown-renderer.tsx",
-                        lineNumber: 616,
+                        lineNumber: 645,
                         columnNumber: 13
                     }, void 0),
                 ul: ({ children })=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("ul", {
@@ -1088,7 +1115,7 @@ function MarkdownRenderer({ content }) {
                         children: children
                     }, void 0, false, {
                         fileName: "[project]/components/markdown-renderer.tsx",
-                        lineNumber: 626,
+                        lineNumber: 655,
                         columnNumber: 13
                     }, void 0),
                 ol: ({ children, node, start })=>{
@@ -1112,7 +1139,7 @@ function MarkdownRenderer({ content }) {
                             })
                         }, void 0, false, {
                             fileName: "[project]/components/markdown-renderer.tsx",
-                            lineNumber: 638,
+                            lineNumber: 667,
                             columnNumber: 17
                         }, void 0);
                     }
@@ -1121,7 +1148,7 @@ function MarkdownRenderer({ content }) {
                         children: children
                     }, void 0, false, {
                         fileName: "[project]/components/markdown-renderer.tsx",
-                        lineNumber: 652,
+                        lineNumber: 681,
                         columnNumber: 15
                     }, void 0);
                 },
@@ -1135,7 +1162,7 @@ function MarkdownRenderer({ content }) {
                             children: children
                         }, void 0, false, {
                             fileName: "[project]/components/markdown-renderer.tsx",
-                            lineNumber: 663,
+                            lineNumber: 692,
                             columnNumber: 17
                         }, void 0);
                     }
@@ -1144,7 +1171,7 @@ function MarkdownRenderer({ content }) {
                         children: processChildren(children, references)
                     }, void 0, false, {
                         fileName: "[project]/components/markdown-renderer.tsx",
-                        lineNumber: 672,
+                        lineNumber: 701,
                         columnNumber: 15
                     }, void 0);
                 },
@@ -1153,7 +1180,7 @@ function MarkdownRenderer({ content }) {
                         children: processChildren(children, references)
                     }, void 0, false, {
                         fileName: "[project]/components/markdown-renderer.tsx",
-                        lineNumber: 678,
+                        lineNumber: 707,
                         columnNumber: 13
                     }, void 0),
                 code: ({ className, children })=>{
@@ -1165,7 +1192,7 @@ function MarkdownRenderer({ content }) {
                             children: children
                         }, void 0, false, {
                             fileName: "[project]/components/markdown-renderer.tsx",
-                            lineNumber: 688,
+                            lineNumber: 717,
                             columnNumber: 17
                         }, void 0);
                     }
@@ -1176,7 +1203,7 @@ function MarkdownRenderer({ content }) {
                             chart: codeString
                         }, void 0, false, {
                             fileName: "[project]/components/markdown-renderer.tsx",
-                            lineNumber: 696,
+                            lineNumber: 725,
                             columnNumber: 22
                         }, void 0);
                     }
@@ -1185,7 +1212,7 @@ function MarkdownRenderer({ content }) {
                         children: codeString
                     }, void 0, false, {
                         fileName: "[project]/components/markdown-renderer.tsx",
-                        lineNumber: 699,
+                        lineNumber: 728,
                         columnNumber: 20
                     }, void 0);
                 },
@@ -1199,7 +1226,7 @@ function MarkdownRenderer({ content }) {
                                 text: codeString
                             }, void 0, false, {
                                 fileName: "[project]/components/markdown-renderer.tsx",
-                                lineNumber: 707,
+                                lineNumber: 736,
                                 columnNumber: 17
                             }, void 0),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("pre", {
@@ -1207,13 +1234,13 @@ function MarkdownRenderer({ content }) {
                                 children: children
                             }, void 0, false, {
                                 fileName: "[project]/components/markdown-renderer.tsx",
-                                lineNumber: 708,
+                                lineNumber: 737,
                                 columnNumber: 17
                             }, void 0)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/markdown-renderer.tsx",
-                        lineNumber: 706,
+                        lineNumber: 735,
                         columnNumber: 15
                     }, void 0);
                 },
@@ -1224,12 +1251,12 @@ function MarkdownRenderer({ content }) {
                             children: children
                         }, void 0, false, {
                             fileName: "[project]/components/markdown-renderer.tsx",
-                            lineNumber: 716,
+                            lineNumber: 745,
                             columnNumber: 15
                         }, void 0)
                     }, void 0, false, {
                         fileName: "[project]/components/markdown-renderer.tsx",
-                        lineNumber: 715,
+                        lineNumber: 744,
                         columnNumber: 13
                     }, void 0),
                 thead: ({ children })=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("thead", {
@@ -1237,14 +1264,14 @@ function MarkdownRenderer({ content }) {
                         children: children
                     }, void 0, false, {
                         fileName: "[project]/components/markdown-renderer.tsx",
-                        lineNumber: 719,
+                        lineNumber: 748,
                         columnNumber: 36
                     }, void 0),
                 tbody: ({ children })=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("tbody", {
                         children: children
                     }, void 0, false, {
                         fileName: "[project]/components/markdown-renderer.tsx",
-                        lineNumber: 720,
+                        lineNumber: 749,
                         columnNumber: 36
                     }, void 0),
                 tr: ({ children })=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
@@ -1252,7 +1279,7 @@ function MarkdownRenderer({ content }) {
                         children: children
                     }, void 0, false, {
                         fileName: "[project]/components/markdown-renderer.tsx",
-                        lineNumber: 721,
+                        lineNumber: 750,
                         columnNumber: 33
                     }, void 0),
                 th: ({ children })=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
@@ -1260,7 +1287,7 @@ function MarkdownRenderer({ content }) {
                         children: children
                     }, void 0, false, {
                         fileName: "[project]/components/markdown-renderer.tsx",
-                        lineNumber: 723,
+                        lineNumber: 752,
                         columnNumber: 13
                     }, void 0),
                 td: ({ children })=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -1268,14 +1295,14 @@ function MarkdownRenderer({ content }) {
                         children: children
                     }, void 0, false, {
                         fileName: "[project]/components/markdown-renderer.tsx",
-                        lineNumber: 725,
+                        lineNumber: 754,
                         columnNumber: 33
                     }, void 0),
                 hr: ()=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("hr", {
                         className: "my-8 border-border"
                     }, void 0, false, {
                         fileName: "[project]/components/markdown-renderer.tsx",
-                        lineNumber: 726,
+                        lineNumber: 755,
                         columnNumber: 21
                     }, void 0),
                 img: ({ src, alt })=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(MediaElement, {
@@ -1283,7 +1310,7 @@ function MarkdownRenderer({ content }) {
                         alt: alt || ""
                     }, void 0, false, {
                         fileName: "[project]/components/markdown-renderer.tsx",
-                        lineNumber: 727,
+                        lineNumber: 756,
                         columnNumber: 34
                     }, void 0),
                 strong: ({ children })=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("strong", {
@@ -1291,7 +1318,7 @@ function MarkdownRenderer({ content }) {
                         children: processChildren(children, references)
                     }, void 0, false, {
                         fileName: "[project]/components/markdown-renderer.tsx",
-                        lineNumber: 729,
+                        lineNumber: 758,
                         columnNumber: 13
                     }, void 0),
                 em: ({ children })=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("em", {
@@ -1299,19 +1326,19 @@ function MarkdownRenderer({ content }) {
                         children: processChildren(children, references)
                     }, void 0, false, {
                         fileName: "[project]/components/markdown-renderer.tsx",
-                        lineNumber: 734,
+                        lineNumber: 763,
                         columnNumber: 13
                     }, void 0)
             },
             children: processedContent
         }, void 0, false, {
             fileName: "[project]/components/markdown-renderer.tsx",
-            lineNumber: 561,
+            lineNumber: 576,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/components/markdown-renderer.tsx",
-        lineNumber: 560,
+        lineNumber: 575,
         columnNumber: 5
     }, this);
 }

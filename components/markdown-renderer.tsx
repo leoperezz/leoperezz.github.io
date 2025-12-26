@@ -556,26 +556,77 @@ export function MarkdownRenderer({ content }: MarkdownRendererProps) {
   const references = useMemo(() => parseReferences(content), [content])
   const processedContent = useMemo(() => preprocessCitations(content), [content])
   
+  // Pre-generate all header IDs deterministically to avoid hydration mismatches
+  const headerIdMap = useMemo(() => {
+    const map = new Map<string, string>()
+    const counts: Record<string, number> = {}
+    
+    // Extract all headers from the content
+    const headerRegex = /^(#{1,6})\s+(.+)$/gm
+    let match
+    
+    while ((match = headerRegex.exec(processedContent)) !== null) {
+      const headerText = match[2]
+      
+      // Generate base ID from header text
+      const baseId = headerText
+        .toLowerCase()
+        .replace(/\*\*/g, '') // Remove bold
+        .replace(/\*/g, '') // Remove italic
+        .replace(/`/g, '') // Remove code
+        .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1') // Convert links to text
+        .replace(/⟦cite:\d+⟧/g, '') // Remove citation markers
+        .replace(/[^a-z0-9\s-]/g, '')
+        .replace(/\s+/g, '-')
+        .replace(/-+/g, '-')
+        .trim()
+      
+      // Make ID unique by adding a counter if it already exists
+      let id = baseId
+      if (counts[baseId] !== undefined) {
+        counts[baseId]++
+        id = `${baseId}-${counts[baseId]}`
+      } else {
+        counts[baseId] = 0
+      }
+      
+      map.set(headerText, id)
+    }
+    
+    return map
+  }, [processedContent])
+  
+  // Get pre-generated ID for a header
+  const getHeaderId = useCallback((text: string): string => {
+    return headerIdMap.get(text) || ''
+  }, [headerIdMap])
+  
   return (
     <div className="prose-custom">
       <ReactMarkdown
         remarkPlugins={[remarkGfm, remarkMath]}
         rehypePlugins={[rehypeKatex]}
         components={{
-          h1: ({ children }) => (
-            <h1 className="mb-6 mt-10 font-sans text-3xl font-semibold tracking-tight text-foreground first:mt-0">
-              {processChildren(children, references)}
-            </h1>
-          ),
+          h1: ({ children }) => {
+            const text = String(children)
+            const id = getHeaderId(text)
+            return (
+              <h1 id={id} className="mb-6 mt-10 font-sans text-3xl font-semibold tracking-tight text-foreground first:mt-0 scroll-mt-24">
+                {processChildren(children, references)}
+              </h1>
+            )
+          },
           h2: ({ children }) => {
             const text = String(children)
+            const id = getHeaderId(text)
             // Check if this is the references section
             const isReferencesHeader = /references|referencias/i.test(text)
             
             if (isReferencesHeader) {
               return (
                 <h2 
-                  className="references-header mb-4 mt-8 font-sans text-2xl font-semibold tracking-tight text-foreground"
+                  id={id}
+                  className="references-header mb-4 mt-8 font-sans text-2xl font-semibold tracking-tight text-foreground scroll-mt-24"
                   data-references-section="true"
                 >
                   {children}
@@ -583,21 +634,28 @@ export function MarkdownRenderer({ content }: MarkdownRendererProps) {
               )
             }
             return (
-              <h2 className="mb-4 mt-8 font-sans text-2xl font-semibold tracking-tight text-foreground">
+              <h2 id={id} className="mb-4 mt-8 font-sans text-2xl font-semibold tracking-tight text-foreground scroll-mt-24">
                 {processChildren(children, references)}
               </h2>
             )
           },
-          h3: ({ children }) => (
-            <h3 className="mb-3 mt-6 font-sans text-xl font-medium text-foreground">
-              {processChildren(children, references)}
-            </h3>
-          ),
-          h4: ({ children }) => (
-            <h4 className="mb-2 mt-4 font-sans text-lg font-medium text-foreground">
-              {processChildren(children, references)}
-            </h4>
-          ),
+          h3: ({ children }) => {
+            const text = String(children)
+            const id = getHeaderId(text)
+            return (
+              <h3 id={id} className="mb-3 mt-6 font-sans text-xl font-medium text-foreground scroll-mt-24">
+                {processChildren(children, references)}
+              </h3>
+            )
+          },
+          h4: ({ children }) => {
+            const id = getHeaderId(String(children))
+            return (
+              <h4 id={id} className="mb-2 mt-4 font-sans text-lg font-medium text-foreground scroll-mt-24">
+                {processChildren(children, references)}
+              </h4>
+            )
+          },
           p: ({ children, node }) => {
             // Check if any child is an image element
             const hasImage = node?.children?.some((child: any) => child.type === "element" && child.tagName === "img")
