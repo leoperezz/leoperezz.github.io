@@ -40,6 +40,13 @@ export interface Exercise {
 // Sample blog posts - add your content here
 export const blogPosts: BlogPost[] = [
   {
+    title: "Action Chunking Transformer",
+    excerpt:
+      "Explaining the Action Chunking Transformer algorithm and its applications in reinforcement learning.",
+    date: "2024-02-20",
+    slug: "action-chunking-transformer",
+  },
+  {
     title: "Proximal Policy Optimization",
     excerpt:
       "Explaining the Proximal Policy Optimization algorithm and its applications in reinforcement learning.",

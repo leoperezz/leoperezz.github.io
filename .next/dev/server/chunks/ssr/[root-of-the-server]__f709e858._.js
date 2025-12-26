@@ -235,6 +235,18 @@ var __TURBOPACK__imported__module__$5b$externals$5d2f$path__$5b$external$5d$__$2
 ;
 const blogPosts = [
     {
+        title: "Action Chunking Transformer",
+        excerpt: "Explaining the Action Chunking Transformer algorithm and its applications in reinforcement learning.",
+        date: "2024-02-20",
+        slug: "action-chunking-transformer"
+    },
+    {
+        title: "Proximal Policy Optimization",
+        excerpt: "Explaining the Proximal Policy Optimization algorithm and its applications in reinforcement learning.",
+        date: "2024-02-12",
+        slug: "proximal-policy-optimization"
+    },
+    {
         title: "Policy Gradient Theorem",
         excerpt: "Proof of the policy gradient theorem in reinforcement learning and a little analysis.",
         date: "2024-02-7",
