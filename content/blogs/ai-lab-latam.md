@@ -67,3 +67,6 @@ graph TD
 
 Building AI research capacity in Latin America is challenging but essential. The region has the talent and motivation—what's needed is investment, infrastructure, and opportunity.
 
+## References 
+
+[1] 

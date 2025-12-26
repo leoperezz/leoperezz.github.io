@@ -40,6 +40,12 @@ export interface Exercise {
 // Sample blog posts - add your content here
 export const blogPosts: BlogPost[] = [
   {
+    title: "Attention Mechanism I",
+    excerpt: "Exploring the attention mechanism in neural networks, and its applications in natural language processing and computer vision. Focusing on the mechanism of attention in 'Attention Is All You Need' paper.",
+    date: "2025-11-28",
+    slug: "attention-mechanism-i",
+  },
+  {
     title: "Understanding the Mathematics of Neural Networks",
     excerpt:
       "Exploring the fundamental mathematical concepts behind neural networks, from linear algebra to optimization.",

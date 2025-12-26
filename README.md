@@ -162,6 +162,23 @@ The `MarkdownRenderer` component supports:
 | **Tables** | Standard GFM | Styled tables |
 | **Blockquotes** | `> quote` | Styled quotes |
 | **Lists** | `- item` or `1. item` | Bulleted and numbered |
+| **Citations** | `[[1]]` | Interactive tooltips linking to references |
+
+### Academic Citations
+
+The renderer supports an academic citation system with interactive tooltips:
+
+\`\`\`markdown
+Neural networks [[1]] have revolutionized machine learning.
+
+## References
+
+1. [Goodfellow, Ian, et al. "Deep Learning". MIT Press, 2016.](https://www.deeplearningbook.org/)
+\`\`\`
+
+When you click on the circular citation badge (①), a tooltip appears showing the paper title and a link to the source.
+
+📖 **For complete documentation**, see [MARKDOWN_GUIDE.md](./MARKDOWN_GUIDE.md)
 
 ## Customization
 

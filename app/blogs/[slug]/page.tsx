@@ -28,14 +28,14 @@ export default async function BlogPostPage({ params }: BlogPageProps) {
 
   const content = post.content
 
+  // Prioritize post.title from content.ts, then fallback to markdown h1, then slug
   const titleMatch = content.match(/^#\s+(.+)$/m)
-  const title = titleMatch
-    ? titleMatch[1]
-    : post.title ||
-      slug
-        .split("-")
-        .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-        .join(" ")
+  const title = post.title ||
+    (titleMatch ? titleMatch[1] : null) ||
+    slug
+      .split("-")
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(" ")
 
   return (
     <div className="min-h-screen flex flex-col">

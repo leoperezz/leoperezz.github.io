@@ -228,6 +228,12 @@ var __TURBOPACK__imported__module__$5b$externals$5d2f$path__$5b$external$5d$__$2
 ;
 const blogPosts = [
     {
+        title: "Attention Mechanism I",
+        excerpt: "Exploring the attention mechanism in neural networks, and its applications in natural language processing and computer vision. Focusing on the mechanism of attention in 'Attention Is All You Need' paper.",
+        date: "2025-11-28",
+        slug: "attention-mechanism-i"
+    },
+    {
         title: "Understanding the Mathematics of Neural Networks",
         excerpt: "Exploring the fundamental mathematical concepts behind neural networks, from linear algebra to optimization.",
         date: "2024-11-20",
@@ -447,8 +453,9 @@ async function BlogPostPage({ params }) {
         (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$components$2f$navigation$2e$react$2d$server$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["notFound"])();
     }
     const content = post.content;
+    // Prioritize post.title from content.ts, then fallback to markdown h1, then slug
     const titleMatch = content.match(/^#\s+(.+)$/m);
-    const title = titleMatch ? titleMatch[1] : post.title || slug.split("-").map((word)=>word.charAt(0).toUpperCase() + word.slice(1)).join(" ");
+    const title = post.title || (titleMatch ? titleMatch[1] : null) || slug.split("-").map((word)=>word.charAt(0).toUpperCase() + word.slice(1)).join(" ");
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
         className: "min-h-screen flex flex-col",
         children: [

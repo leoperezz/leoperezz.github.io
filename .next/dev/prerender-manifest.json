@@ -1,1 +1,11 @@
-{"version":4,"routes":{"/blogs/neural-networks-math":{},"/blogs/embodied-ai-future":{},"/blogs/ai-lab-latam":{}},"dynamicRoutes":{"/blogs/[slug]":{"dataRoute":null,"dataRouteRegex":null,"fallback":null,"fallbackRevalidate":false,"fallbackSourceRoute":"/blogs/[slug]","routeRegex":"^\\/blogs\\/([^/]+?)(?:\\/)?$","allowHeader":[]}},"notFoundRoutes":[],"preview":{"previewModeId":"e9ad0490ebe0aaade832b4265784d626","previewModeSigningKey":"40e3efa6d4ad6c2ed46fdab4754375a041180ada3aab7cf280aa5d1b1e44e31e","previewModeEncryptionKey":"bde967542b43f80a05637e0606ab71cf119c3df2c1d43373be9d833d2880a844"}}
+{
+  "version": 4,
+  "routes": {},
+  "dynamicRoutes": {},
+  "notFoundRoutes": [],
+  "preview": {
+    "previewModeId": "5abdf8a92be3c64259ed3dc6e7a412c1",
+    "previewModeSigningKey": "3da2389c7e33b6899213b74fd1735d11e0d9fab009ba08202b7eba45ca173bbd",
+    "previewModeEncryptionKey": "91a4461a6e2f2bfadfada5f874721b1b74086c2f10c96e69fa238f4a771f7fa7"
+  }
+}
