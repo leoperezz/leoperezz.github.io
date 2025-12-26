@@ -42,15 +42,15 @@ export const blogPosts: BlogPost[] = [
   {
     title: "Attention Mechanism I",
     excerpt: "Exploring the attention mechanism in neural networks, and its applications in natural language processing and computer vision. Focusing on the mechanism of attention in 'Attention Is All You Need' paper.",
-    date: "2025-11-28",
+    date: "2024-01-12",
     slug: "attention-mechanism-i",
   },
   {
-    title: "Understanding the Mathematics of Neural Networks",
+    title: "Policy Gradient Theorem",
     excerpt:
-      "Exploring the fundamental mathematical concepts behind neural networks, from linear algebra to optimization.",
-    date: "2024-11-20",
-    slug: "neural-networks-math",
+      "Proof of the policy gradient theorem in reinforcement learning and a little analysis.",
+    date: "2024-02-7",
+    slug: "policy-gradient-theorem",
   },
   {
     title: "Why Embodied AI is the Future of Robotics",

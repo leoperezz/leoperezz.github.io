@@ -1,11 +1,1 @@
-{
-  "version": 4,
-  "routes": {},
-  "dynamicRoutes": {},
-  "notFoundRoutes": [],
-  "preview": {
-    "previewModeId": "5abdf8a92be3c64259ed3dc6e7a412c1",
-    "previewModeSigningKey": "3da2389c7e33b6899213b74fd1735d11e0d9fab009ba08202b7eba45ca173bbd",
-    "previewModeEncryptionKey": "91a4461a6e2f2bfadfada5f874721b1b74086c2f10c96e69fa238f4a771f7fa7"
-  }
-}
+{"version":4,"routes":{"/blogs/attention-mechanism-i":{},"/blogs/policy-gradient-theorem":{},"/blogs/embodied-ai-future":{},"/blogs/ai-lab-latam":{}},"dynamicRoutes":{"/blogs/[slug]":{"dataRoute":null,"dataRouteRegex":null,"fallback":null,"fallbackRevalidate":false,"fallbackSourceRoute":"/blogs/[slug]","routeRegex":"^\\/blogs\\/([^/]+?)(?:\\/)?$","allowHeader":[]}},"notFoundRoutes":[],"preview":{"previewModeId":"5abdf8a92be3c64259ed3dc6e7a412c1","previewModeSigningKey":"3da2389c7e33b6899213b74fd1735d11e0d9fab009ba08202b7eba45ca173bbd","previewModeEncryptionKey":"91a4461a6e2f2bfadfada5f874721b1b74086c2f10c96e69fa238f4a771f7fa7"}}

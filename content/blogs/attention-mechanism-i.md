@@ -1,5 +1,3 @@
-# Introduction
-
 In this blog, we will primarily discuss the attention mechanism, but not from a unique perspective of Large Language Models. Instead, we will explore the general idea behind it. For this purpose, we will use another system that is quite related, which I like to exemplify because attention mechanisms vary and, furthermore, it is related to robotics. We will touch on the paper "Attention Is All You Need" [[1]]; however, we will not address the paper itself, but rather the attention mechanism that serves various types of information sources and how it works in general.
 
 When we think about attention, we can ask: how can we explicitly compute the importance that one variable has over another? And beyond that, how can we also impose certain natural conditions of our problem so that this importance is logical and coherent with our problem? This is how I personally view attention, and below I will proceed to explain why.
@@ -425,7 +423,7 @@ An example of this can be found in Visual Language Action Models, specifically i
 
 We can see a matrix of this in the following image:
 
-![pi 0.5 masking attention](https://hackmd.io/_uploads/rkcekfnmZl.png)
+![pi 0.5 masking attention](https://res.cloudinary.com/dtpiuha91/image/upload/v1766764619/upload_94eb96a77ed7a32d7fd06b786568a261_ies36z.png)
 
 Mathematically we can represent this as a block matrix $\tilde{S}^*_{\pi}$. Let us define the token blocks as $I$ (Image), $P$ (Prompt/State), $A$ (FAST Actions) and $E$ (Expert Embeddings):
 
