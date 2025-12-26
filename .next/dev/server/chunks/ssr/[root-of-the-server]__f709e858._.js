@@ -261,40 +261,15 @@ const blogPosts = [
 ];
 const projects = [
     {
-        title: "Topological Methods in Robot Motion Planning",
-        description: "Investigating the application of algebraic topology to configuration spaces, with implications for motion planning algorithms in high-dimensional robotic systems.",
+        title: "NONHUMAN",
+        description: "Embodied AI laboratory in Latin America. Aiming to advance research in embodied artificial intelligence across the region. I'm the founder and director of the laboratory.",
         tags: [
-            "Topology",
-            "Motion Planning",
-            "Configuration Spaces"
+            "Embodied AI",
+            "Research"
         ],
-        link: "#",
-        linkLabel: "View PDF",
-        slug: "topological-motion-planning"
-    },
-    {
-        title: "Neural Implicit Representations for 3D Scene Understanding",
-        description: "Exploring coordinate-based neural networks for encoding spatial information, with applications to robot perception and manipulation tasks.",
-        tags: [
-            "Computer Vision",
-            "Neural Networks",
-            "3D Reconstruction"
-        ],
-        link: "#",
-        linkLabel: "GitHub",
-        slug: "neural-implicit-3d"
-    },
-    {
-        title: "Geometric Control on Lie Groups",
-        description: "Studying the mathematical foundations of geometric control theory and its applications to autonomous systems operating on non-Euclidean manifolds.",
-        tags: [
-            "Control Theory",
-            "Lie Groups",
-            "Differential Geometry"
-        ],
-        link: "#",
-        linkLabel: "View PDF",
-        slug: "geometric-control-lie-groups"
+        link: "https://www.nonhuman.site",
+        linkLabel: "View Website",
+        slug: "nonhuman"
     }
 ];
 const notes = [

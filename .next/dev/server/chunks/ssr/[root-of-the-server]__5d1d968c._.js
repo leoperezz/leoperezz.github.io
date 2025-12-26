@@ -228,22 +228,28 @@ var __TURBOPACK__imported__module__$5b$externals$5d2f$path__$5b$external$5d$__$2
 ;
 const blogPosts = [
     {
-        title: "Understanding the Mathematics of Neural Networks",
-        excerpt: "Exploring the fundamental mathematical concepts behind neural networks, from linear algebra to optimization.",
-        date: "2024-11-20",
-        slug: "neural-networks-math"
+        title: "Action Chunking Transformer",
+        excerpt: "Explaining the Action Chunking Transformer algorithm and its applications in reinforcement learning.",
+        date: "2024-02-20",
+        slug: "action-chunking-transformer"
     },
     {
-        title: "Why Embodied AI is the Future of Robotics",
-        excerpt: "Reflections on why embodied intelligence represents a paradigm shift in how we think about AI.",
-        date: "2024-10-15",
-        slug: "embodied-ai-future"
+        title: "Proximal Policy Optimization",
+        excerpt: "Explaining the Proximal Policy Optimization algorithm and its applications in reinforcement learning.",
+        date: "2024-02-12",
+        slug: "proximal-policy-optimization"
     },
     {
-        title: "Building an AI Lab in Latin America",
-        excerpt: "The challenges and opportunities of creating AI research infrastructure in the region.",
-        date: "2024-09-08",
-        slug: "ai-lab-latam"
+        title: "Policy Gradient Theorem",
+        excerpt: "Proof of the policy gradient theorem in reinforcement learning and a little analysis.",
+        date: "2024-02-7",
+        slug: "policy-gradient-theorem"
+    },
+    {
+        title: "Attention Mechanism I",
+        excerpt: "Exploring the attention mechanism in neural networks, and its applications in natural language processing and computer vision. Focusing on the mechanism of attention in 'Attention Is All You Need' paper.",
+        date: "2024-01-12",
+        slug: "attention-mechanism-i"
     }
 ];
 const projects = [
@@ -282,6 +288,17 @@ const projects = [
         link: "#",
         linkLabel: "View PDF",
         slug: "geometric-control-lie-groups"
+    },
+    {
+        title: "NONHUMAN",
+        description: "Embodied AI laboratory in Latin America. Aiming to advance research in embodied artificial intelligence across the region. I'm the founder and director of the laboratory.",
+        tags: [
+            "Embodied AI",
+            "Research"
+        ],
+        link: "https://www.nonhuman.site",
+        linkLabel: "View Website",
+        slug: "nonhuman"
     }
 ];
 const notes = [
