@@ -42,7 +42,7 @@ export const blogPosts: BlogPost[] = [
   {
     title: "Action Chunking Transformer",
     excerpt:
-      "Explaining the Action Chunking Transformer algorithm and its applications in reinforcement learning.",
+      "Paper Review of one of the most important robotics papers of recent years.",
     date: "2024-02-20",
     slug: "action-chunking-transformer",
   },
@@ -65,6 +65,27 @@ export const blogPosts: BlogPost[] = [
     excerpt: "Exploring the attention mechanism in neural networks, and its applications in natural language processing and computer vision. Focusing on the mechanism of attention in 'Attention Is All You Need' paper.",
     date: "2024-01-12",
     slug: "attention-mechanism-i",
+  },
+  {
+    title: "Reinforcement Learning for VLAs: Overview and Thoughts",
+    excerpt:
+      "An overview of reinforcement learning methods for Vision-Language-Action models, plus personal reflections on the field.",
+    date: "2024-03-15",
+    slug: "reinforcement-learning-vlas",
+  },
+  {
+    title: "Optimal Embodiment: Searching for the perfect robot to imitate humans",
+    excerpt:
+      "Exploring the relationship between robot morphology and human imitation—what makes a body ideal for learning from us.",
+    date: "2024-03-20",
+    slug: "optimal-embodiment",
+  },
+  {
+    title: "Whole Body Control: The necessary step for truly useful robots",
+    excerpt:
+      "Why coordinating the full body, not just the arms, is essential for robots that can actually help us in the real world.",
+    date: "2024-03-25",
+    slug: "whole-body-control",
   }
 ]
 
