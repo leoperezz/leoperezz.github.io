@@ -37,8 +37,29 @@ export interface Exercise {
   content?: string
 }
 
-// Sample blog posts - add your content here
+// Sample blog posts - add your content here (ordered by date, newest first)
 export const blogPosts: BlogPost[] = [
+  {
+    title: "Whole Body Control: The necessary step for truly useful robots",
+    excerpt:
+      "Why coordinating the full body, not just the arms, is essential for robots that can actually help us in the real world.",
+    date: "2024-03-25",
+    slug: "whole-body-control",
+  },
+  {
+    title: "Optimal Embodiment: Searching for the perfect robot to imitate humans",
+    excerpt:
+      "Exploring the relationship between robot morphology and human imitation—what makes a body ideal for learning from us.",
+    date: "2024-03-20",
+    slug: "optimal-embodiment",
+  },
+  {
+    title: "Reinforcement Learning for VLAs: Overview and Thoughts",
+    excerpt:
+      "An overview of reinforcement learning methods for Vision-Language-Action models, plus personal reflections on the field.",
+    date: "2024-03-15",
+    slug: "reinforcement-learning-vlas",
+  },
   {
     title: "Action Chunking Transformer",
     excerpt:
@@ -66,27 +87,6 @@ export const blogPosts: BlogPost[] = [
     date: "2024-01-12",
     slug: "attention-mechanism-i",
   },
-  {
-    title: "Reinforcement Learning for VLAs: Overview and Thoughts",
-    excerpt:
-      "An overview of reinforcement learning methods for Vision-Language-Action models, plus personal reflections on the field.",
-    date: "2024-03-15",
-    slug: "reinforcement-learning-vlas",
-  },
-  {
-    title: "Optimal Embodiment: Searching for the perfect robot to imitate humans",
-    excerpt:
-      "Exploring the relationship between robot morphology and human imitation—what makes a body ideal for learning from us.",
-    date: "2024-03-20",
-    slug: "optimal-embodiment",
-  },
-  {
-    title: "Whole Body Control: The necessary step for truly useful robots",
-    excerpt:
-      "Why coordinating the full body, not just the arms, is essential for robots that can actually help us in the real world.",
-    date: "2024-03-25",
-    slug: "whole-body-control",
-  }
 ]
 
 // Sample projects - add your content here
