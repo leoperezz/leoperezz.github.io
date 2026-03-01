@@ -274,60 +274,18 @@ const projects = [
 ];
 const notes = [
     {
-        title: "Introduction to Differential Geometry",
+        title: "Covariant Derivative and some differential geometry",
         date: "2024-11-15",
-        slug: "intro-differential-geometry",
+        slug: "covariant-derivative-differential-geometry",
         topic: "Mathematics"
-    },
-    {
-        title: "Reinforcement Learning: Policy Gradient Methods",
-        date: "2024-10-28",
-        slug: "policy-gradient-methods",
-        topic: "Machine Learning"
-    },
-    {
-        title: "Control Theory for Robotics",
-        date: "2024-09-12",
-        slug: "control-theory-robotics",
-        topic: "Robotics"
-    },
-    {
-        title: "Linear Algebra Review: Eigenvalues and SVD",
-        date: "2024-08-03",
-        slug: "linear-algebra-eigen-svd",
-        topic: "Mathematics"
-    },
-    {
-        title: "Probabilistic Graphical Models",
-        date: "2024-07-19",
-        slug: "probabilistic-graphical-models",
-        topic: "Machine Learning"
     }
 ];
 const exercises = [
     {
-        title: "Lie Groups and Rotation Representations",
+        title: "Differential Geometry",
         date: "2024-11-10",
         slug: "lie-groups-rotations",
         difficulty: "Hard"
-    },
-    {
-        title: "Implementing a Simple MDP Solver",
-        date: "2024-10-15",
-        slug: "mdp-solver",
-        difficulty: "Medium"
-    },
-    {
-        title: "Gradient Descent Variants Comparison",
-        date: "2024-09-05",
-        slug: "gradient-descent-variants",
-        difficulty: "Easy"
-    },
-    {
-        title: "PID Controller Tuning Challenge",
-        date: "2024-08-20",
-        slug: "pid-tuning-challenge",
-        difficulty: "Medium"
     }
 ];
 function formatDate(dateString, format = "long") {

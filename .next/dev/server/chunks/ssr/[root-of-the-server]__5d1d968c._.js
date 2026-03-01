@@ -254,42 +254,6 @@ const blogPosts = [
 ];
 const projects = [
     {
-        title: "Topological Methods in Robot Motion Planning",
-        description: "Investigating the application of algebraic topology to configuration spaces, with implications for motion planning algorithms in high-dimensional robotic systems.",
-        tags: [
-            "Topology",
-            "Motion Planning",
-            "Configuration Spaces"
-        ],
-        link: "#",
-        linkLabel: "View PDF",
-        slug: "topological-motion-planning"
-    },
-    {
-        title: "Neural Implicit Representations for 3D Scene Understanding",
-        description: "Exploring coordinate-based neural networks for encoding spatial information, with applications to robot perception and manipulation tasks.",
-        tags: [
-            "Computer Vision",
-            "Neural Networks",
-            "3D Reconstruction"
-        ],
-        link: "#",
-        linkLabel: "GitHub",
-        slug: "neural-implicit-3d"
-    },
-    {
-        title: "Geometric Control on Lie Groups",
-        description: "Studying the mathematical foundations of geometric control theory and its applications to autonomous systems operating on non-Euclidean manifolds.",
-        tags: [
-            "Control Theory",
-            "Lie Groups",
-            "Differential Geometry"
-        ],
-        link: "#",
-        linkLabel: "View PDF",
-        slug: "geometric-control-lie-groups"
-    },
-    {
         title: "NONHUMAN",
         description: "Embodied AI laboratory in Latin America. Aiming to advance research in embodied artificial intelligence across the region. I'm the founder and director of the laboratory.",
         tags: [
@@ -303,60 +267,18 @@ const projects = [
 ];
 const notes = [
     {
-        title: "Introduction to Differential Geometry",
+        title: "Covariant Derivative and some differential geometry",
         date: "2024-11-15",
-        slug: "intro-differential-geometry",
+        slug: "covariant-derivative-differential-geometry",
         topic: "Mathematics"
-    },
-    {
-        title: "Reinforcement Learning: Policy Gradient Methods",
-        date: "2024-10-28",
-        slug: "policy-gradient-methods",
-        topic: "Machine Learning"
-    },
-    {
-        title: "Control Theory for Robotics",
-        date: "2024-09-12",
-        slug: "control-theory-robotics",
-        topic: "Robotics"
-    },
-    {
-        title: "Linear Algebra Review: Eigenvalues and SVD",
-        date: "2024-08-03",
-        slug: "linear-algebra-eigen-svd",
-        topic: "Mathematics"
-    },
-    {
-        title: "Probabilistic Graphical Models",
-        date: "2024-07-19",
-        slug: "probabilistic-graphical-models",
-        topic: "Machine Learning"
     }
 ];
 const exercises = [
     {
-        title: "Lie Groups and Rotation Representations",
+        title: "Differential Geometry",
         date: "2024-11-10",
         slug: "lie-groups-rotations",
         difficulty: "Hard"
-    },
-    {
-        title: "Implementing a Simple MDP Solver",
-        date: "2024-10-15",
-        slug: "mdp-solver",
-        difficulty: "Medium"
-    },
-    {
-        title: "Gradient Descent Variants Comparison",
-        date: "2024-09-05",
-        slug: "gradient-descent-variants",
-        difficulty: "Easy"
-    },
-    {
-        title: "PID Controller Tuning Challenge",
-        date: "2024-08-20",
-        slug: "pid-tuning-challenge",
-        difficulty: "Medium"
     }
 ];
 function formatDate(dateString, format = "long") {
