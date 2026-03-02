@@ -288,6 +288,18 @@ const projects = [
         link: "https://www.nonhuman.site",
         linkLabel: "View Website",
         slug: "nonhuman"
+    },
+    {
+        title: "Robonet",
+        description: "The internet of Robotics. Robonet is a startup focused on scaling full-body datasets to enable whole-body policies in robots.",
+        tags: [
+            "Robotics",
+            "Embodied AI",
+            "Startup"
+        ],
+        link: "https://robonet.nonhuman.site",
+        linkLabel: "View Website",
+        slug: "robonet"
     }
 ];
 const notes = [
@@ -417,7 +429,7 @@ function ProjectsPage() {
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                             className: "mt-3 font-serif text-base text-muted-foreground",
-                            children: "Selected projects and ongoing investigations."
+                            children: "Selected projects and ongoing investigations. Robonet: The internet of Robotics."
                         }, void 0, false, {
                             fileName: "[project]/app/projects/page.tsx",
                             lineNumber: 17,

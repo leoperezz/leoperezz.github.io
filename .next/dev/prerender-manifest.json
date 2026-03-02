@@ -1,11 +1,1 @@
-{
-  "version": 4,
-  "routes": {},
-  "dynamicRoutes": {},
-  "notFoundRoutes": [],
-  "preview": {
-    "previewModeId": "52749554f0e84f972b1b4760951caf41",
-    "previewModeSigningKey": "b1389174e27c1d18244fecfd7a3a9d716d69a932c2ccfb193af922b3a7bf571a",
-    "previewModeEncryptionKey": "1255d5f1c1aef52e5b9622f421019a01d2190003162868744dbada05f8d28c78"
-  }
-}
+{"version":4,"routes":{"/projects/nonhuman":{},"/projects/robonet":{}},"dynamicRoutes":{"/projects/[slug]":{"dataRoute":null,"dataRouteRegex":null,"fallback":null,"fallbackRevalidate":false,"fallbackSourceRoute":"/projects/[slug]","routeRegex":"^\\/projects\\/([^/]+?)(?:\\/)?$","allowHeader":[]}},"notFoundRoutes":[],"preview":{"previewModeId":"52749554f0e84f972b1b4760951caf41","previewModeSigningKey":"b1389174e27c1d18244fecfd7a3a9d716d69a932c2ccfb193af922b3a7bf571a","previewModeEncryptionKey":"1255d5f1c1aef52e5b9622f421019a01d2190003162868744dbada05f8d28c78"}}

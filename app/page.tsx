@@ -32,7 +32,17 @@ export default function Home() {
               >
                 NONHUMAN
               </a>
-              —aiming to advance research in embodied artificial intelligence across the region.
+              —aiming to advance research in embodied artificial intelligence across the region. I'm also founding my
+              robotics startup{" "}
+              <a
+                href="https://robonet.nonhuman.site"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline underline-offset-4 hover:text-muted-foreground transition-colors"
+              >
+                Robonet
+              </a>
+              , focused on scaling full-body datasets to enable whole-body policies in robots.
             </p>
 
             <div className="mt-12 pt-8 border-t border-border">

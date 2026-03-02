@@ -15,7 +15,7 @@ export default function ProjectsPage() {
         <section className="mx-auto max-w-4xl px-6 py-20">
           <h1 className="font-sans text-3xl font-semibold tracking-tight text-foreground">Projects</h1>
           <p className="mt-3 font-serif text-base text-muted-foreground">
-            Selected projects and ongoing investigations.
+            Selected projects and ongoing investigations. Robonet: The internet of Robotics.
           </p>
 
           {hasProjects ? (

@@ -100,6 +100,15 @@ export const projects: Project[] = [
     linkLabel: "View Website",
     slug: "nonhuman",
   },
+  {
+    title: "Robonet",
+    description:
+      "The internet of Robotics. Robonet is a startup focused on scaling full-body datasets to enable whole-body policies in robots.",
+    tags: ["Robotics", "Embodied AI", "Startup"],
+    link: "https://robonet.nonhuman.site",
+    linkLabel: "View Website",
+    slug: "robonet",
+  },
 ]
 
 // Sample notes - add your content here
