@@ -56,7 +56,9 @@ but this can break physical consistency (e.g., negative masses or non-positive-d
 
 ## Reparameterizing the Link Space
 
-**Definition 3.1 (Physically Consistent Inertial Parameters).** A rigid body's parameters are physically consistent if its pseudo-inertia matrix:
+We first derive a physics-consistent randomization solution for the link space, which mainly consists of inertial parameters
+
+**Definition 3.1 (Physics-Consistent Inertial Parameters).** A rigid body's inertial parameters $\kappa_{\text{link}}$ are said to be physics-consistent if its pseudo-inertia matrix:
 
 $$
 \mathbf{J} =
@@ -75,7 +77,7 @@ $$
 
 This condition compactly captures that mass must be positive, the center of mass must be realizable, and the inertia matrix must originate from a physically possible mass distribution.
 
-**Lemma 3.2 (Cholesky Factorization).** If $J \succ 0$, it admits a Cholesky decomposition:
+**Lemma 3.2 (Cholesky Factorization).** If $\mathbf{J} \succ 0$, it admits a Cholesky decomposition:
 
 $$
 J = LL^\top,
@@ -87,7 +89,7 @@ $$
 L' = L + \epsilon, \quad \epsilon \sim \mathcal{D}, \qquad J' = L' L'^\top.
 $$
 
-**Lemma 3.3 (Affine Transformation).** If we apply an affine transformation to the rigid body, $x' = E x$, and scale the mass density $\rho' = \beta^2 \rho$, the pseudo-inertia transforms as:
+**Lemma 3.3 (Affine Transformation).** If we apply an affine transformation to the rigid body coordinates, $x' = E x$, and scale the mass density $\rho' = \beta^2 \rho$, the pseudo-inertia transforms as:
 
 $$
 J' = U J U^\top, \qquad U = \beta E.
@@ -106,6 +108,40 @@ J' = (U L)(U L)^\top,
 $$
 
 which suggests that **perturbing $J$** in a physically consistent manner is equivalent to **perturbing its factorization $L$ via an affine transformation $U$** associated with reasonable geometric scaling and deformations.
+
+### Geometric interpretation
+
+Lemma 3.2 suggests a tempting randomization strategy: if $\mathbf{J} = \mathbf{L}\mathbf{L}^\top$, then perturb $\mathbf{L}$ and rebuild $\mathbf{J}$:
+
+$$
+\mathbf{L}' = \mathbf{L} + \epsilon, \quad \epsilon \sim \mathcal{D}, \qquad \mathbf{J}' = \mathbf{L}' \mathbf{L}'^\top.
+$$
+
+However, to understand *which* perturbations are meaningful (and how to parameterize them cleanly), it helps to view them through rigid-body geometry. In this context, an affine transformation can be thought of as a linear map that includes rotations and anisotropic rescalings (plus the associated homogeneous-coordinate machinery).
+
+Lemma 3.3 states that under an affine coordinate change $x' = E x$ together with a density scaling $\rho' = \beta^2 \rho$, the pseudo-inertia transforms as:
+
+$$
+\mathbf{J}' = \mathbf{U}\mathbf{J}\mathbf{U}^\top, \qquad \mathbf{U} = \beta \mathbf{E}.
+$$
+
+Combining this with $\mathbf{J} = \mathbf{L}\mathbf{L}^\top$ yields:
+
+$$
+\mathbf{J}' = \mathbf{U}\mathbf{L}\mathbf{L}^\top\mathbf{U}^\top = (\mathbf{U}\mathbf{L})(\mathbf{U}\mathbf{L})^\top.
+$$
+
+So, **perturbing the pseudo-inertia $\mathbf{J}$** can be interpreted as **perturbing its Cholesky factor $\mathbf{L}$** via left-multiplication by a geometrically meaningful transform $\mathbf{U}$. If we want to match the naive perturbation $\mathbf{L}' = \mathbf{L} + \epsilon$ with an affine-induced one $\mathbf{L}' = \mathbf{U}\mathbf{L}$, we can write:
+
+$$
+\begin{aligned}
+\mathbf{U}\mathbf{L} &= \mathbf{L} + \epsilon \\
+\mathbf{U} &= (\mathbf{L} + \epsilon)\mathbf{L}^{-1} \\
+&= \mathbf{I} + \epsilon \mathbf{L}^{-1}.
+\end{aligned}
+$$
+
+This makes the key point explicit: choosing a random perturbation $\epsilon$ implicitly defines a random affine-like transform $\mathbf{U}$. The reparameterization in Lemma 3.4 is designed to sample such transforms in a controlled, interpretable way, while guaranteeing $\mathbf{J}' \succ 0$.
 
 **Lemma 3.4 (Bijective Map $\mathbb{R}^{10} \leftrightarrow U$).** Instead of sampling $U$ directly, [[3]] constructs a bijective map between matrices $U$ and an "explainable" vector of dimension 10:
 
@@ -157,7 +193,9 @@ which can be interpreted as:
 3. **Scaling limits and torques** consistently with total mass, so that control behavior remains comparable between morphologies with different masses.  
 4. **Choosing joint types** (revolute or fixed) in some cases, allowing certain DoFs to be locked or activated depending on the sample.
 
-The result is a new set $\kappa'_{\text{joint}}$ that respects geometric and inertial constraints while exploring a rich family of joint configurations.
+The result is a new set $\kappa'_{\text{joint}}$ that respects geometric and inertial constraints while exploring a rich family of joint configurations. In short, on the joint side we are essentially randomizing within a set of predefined intervals that are chosen to be reasonably valid.
+
+For more details on the values/ranges explored, see the appendix in [[3]].
 
 ## Joint Space Semantic Alignment and Morphology Graphs
 

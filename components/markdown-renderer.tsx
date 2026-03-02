@@ -467,6 +467,223 @@ function MermaidDiagram({ chart }: { chart: string }) {
   )
 }
 
+function FlowMatchingAnimation() {
+  const [activeStep, setActiveStep] = useState(0)
+  const [isPlaying, setIsPlaying] = useState(true)
+  const TOTAL = 6
+
+  useEffect(() => {
+    if (!isPlaying) return
+    const id = setInterval(() => setActiveStep(s => (s + 1) % TOTAL), 950)
+    return () => clearInterval(id)
+  }, [isPlaying])
+
+  const steps = [
+    { tau: '0',   px: 28, py: 50, dx: 5,  dy: -6 },
+    { tau: '0.2', px: 34, py: 44, dx: 5,  dy: -6 },
+    { tau: '0.4', px: 40, py: 37, dx: 6,  dy: -5 },
+    { tau: '0.6', px: 47, py: 32, dx: 5,  dy: -3 },
+    { tau: '0.8', px: 52, py: 29, dx: 3,  dy: -2 },
+    { tau: '1',   px: 54, py: 27, dx: 0,  dy: 0  },
+  ]
+
+  function renderShape(i: number, isActive: boolean) {
+    const fill = isActive ? 'var(--primary)' : 'currentColor'
+    const fillOp = isActive ? '0.13' : '0.06'
+    const stroke = isActive ? 'var(--primary)' : 'currentColor'
+    const strokeOp = isActive ? '1' : '0.28'
+    const sw = '1.5'
+    if (i === 0) return (
+      <circle cx="40" cy="38" r="20"
+        fill={fill} fillOpacity={fillOp}
+        stroke={stroke} strokeOpacity={strokeOp} strokeWidth={sw} />
+    )
+    if (i === 1) return (
+      <ellipse cx="40" cy="38" rx="22" ry="17"
+        transform="rotate(12, 40, 38)"
+        fill={fill} fillOpacity={fillOp}
+        stroke={stroke} strokeOpacity={strokeOp} strokeWidth={sw} />
+    )
+    if (i === 2) return (
+      <ellipse cx="40" cy="38" rx="24" ry="14"
+        transform="rotate(25, 40, 38)"
+        fill={fill} fillOpacity={fillOp}
+        stroke={stroke} strokeOpacity={strokeOp} strokeWidth={sw} />
+    )
+    if (i === 3) return (
+      <ellipse cx="40" cy="38" rx="26" ry="12"
+        transform="rotate(38, 40, 38)"
+        fill={fill} fillOpacity={fillOp}
+        stroke={stroke} strokeOpacity={strokeOp} strokeWidth={sw} />
+    )
+    if (i === 4) return (
+      <ellipse cx="40" cy="38" rx="27" ry="10"
+        transform="rotate(50, 40, 38)"
+        fill={fill} fillOpacity={fillOp}
+        stroke={stroke} strokeOpacity={strokeOp} strokeWidth={sw} />
+    )
+    return (
+      <path d="M 17 46 Q 13 24 36 17 Q 62 12 64 30 Q 67 50 50 56 Q 30 62 17 46 Z"
+        fill={fill} fillOpacity={fillOp}
+        stroke={stroke} strokeOpacity={strokeOp} strokeWidth={sw} />
+    )
+  }
+
+  return (
+    <div style={{
+      border: '1px solid var(--border)',
+      borderRadius: '0.5rem',
+      padding: '1.125rem 0.75rem 0.875rem',
+      margin: '1.25rem 0',
+      background: 'var(--card)',
+      color: 'var(--foreground)',
+    }}>
+      <p style={{
+        textAlign: 'center',
+        fontSize: '0.68rem',
+        fontFamily: 'var(--font-sans)',
+        color: 'var(--muted-foreground)',
+        margin: '0 0 0.875rem 0',
+        letterSpacing: '0.02em',
+      }}>
+        Flow matching inference — Euler integration from{' '}
+        <em>p</em><sub>0</sub> to <em>p</em><sub>1</sub>{' '}
+        (= <em>a</em><sub>t</sub>)
+      </p>
+
+      <div style={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        gap: '0.15rem',
+        overflowX: 'auto',
+        paddingBottom: '0.25rem',
+      }}>
+        {steps.map((s, i) => {
+          const isActive = activeStep === i
+          const isPast = activeStep > i
+          return (
+            <React.Fragment key={i}>
+              {i > 0 && (
+                <div style={{
+                  fontSize: '0.6rem',
+                  color: 'var(--muted-foreground)',
+                  opacity: 0.45,
+                  padding: '0 0.1rem',
+                  userSelect: 'none',
+                  flexShrink: 0,
+                }}>→</div>
+              )}
+              <div
+                onClick={() => { setActiveStep(i); setIsPlaying(false) }}
+                style={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                  gap: '0.2rem',
+                  cursor: 'pointer',
+                  flexShrink: 0,
+                }}
+              >
+                <div style={{
+                  border: `1px solid ${isActive ? 'var(--primary)' : 'var(--border)'}`,
+                  borderRadius: '0.375rem',
+                  padding: '2px',
+                  opacity: isPast ? 0.45 : 1,
+                  transition: 'border-color 0.3s ease, opacity 0.3s ease',
+                }}>
+                  <svg width="70" height="70" viewBox="0 0 80 80" style={{ display: 'block' }}>
+                    {renderShape(i, isActive)}
+
+                    {isActive && i < TOTAL - 1 && (
+                      <>
+                        <defs>
+                          <marker id="fma-arrow" markerWidth="5" markerHeight="5" refX="2.5" refY="2.5" orient="auto">
+                            <path d="M0,0 L5,2.5 L0,5 Z" fill="var(--primary)" />
+                          </marker>
+                        </defs>
+                        <line
+                          x1={s.px} y1={s.py}
+                          x2={s.px + s.dx * 2.2} y2={s.py + s.dy * 2.2}
+                          stroke="var(--primary)" strokeWidth="1.5"
+                          markerEnd="url(#fma-arrow)"
+                          opacity="0.85"
+                        />
+                      </>
+                    )}
+
+                    <circle
+                      cx={s.px} cy={s.py}
+                      r={isActive ? 3.5 : 2.5}
+                      fill={isActive ? 'var(--primary)' : 'var(--muted-foreground)'}
+                      fillOpacity={isActive ? 1 : (isPast ? 0.3 : 0.5)}
+                    />
+
+                    {(i === 0 || i === TOTAL - 1) && (
+                      <text
+                        x="40" y="73"
+                        textAnchor="middle"
+                        fontSize="8"
+                        fontFamily="var(--font-sans)"
+                        fill="var(--foreground)"
+                        fillOpacity={isActive ? 0.75 : 0.35}
+                      >
+                        {i === 0 ? 'p₀' : 'p₁'}
+                      </text>
+                    )}
+                  </svg>
+                </div>
+                <span style={{
+                  fontSize: '0.6rem',
+                  fontFamily: 'var(--font-mono)',
+                  color: isActive ? 'var(--foreground)' : 'var(--muted-foreground)',
+                  fontWeight: isActive ? 600 : 400,
+                  transition: 'color 0.3s ease',
+                }}>
+                  τ={s.tau}
+                </span>
+              </div>
+            </React.Fragment>
+          )
+        })}
+      </div>
+
+      <div style={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        marginTop: '0.75rem',
+        paddingTop: '0.625rem',
+        borderTop: '1px solid var(--border)',
+      }}>
+        <span style={{
+          fontSize: '0.62rem',
+          fontFamily: 'var(--font-mono)',
+          color: 'var(--muted-foreground)',
+        }}>
+          ● x<sub>τ</sub> — sample &nbsp;·&nbsp; u<sub>θ</sub>(x,τ) — velocity field
+        </span>
+        <button
+          onClick={() => setIsPlaying(p => !p)}
+          style={{
+            fontSize: '0.62rem',
+            fontFamily: 'var(--font-sans)',
+            color: 'var(--muted-foreground)',
+            background: 'none',
+            border: '1px solid var(--border)',
+            borderRadius: '0.25rem',
+            padding: '0.2rem 0.65rem',
+            cursor: 'pointer',
+            letterSpacing: '0.02em',
+          }}
+        >
+          {isPlaying ? 'pause' : 'play'}
+        </button>
+      </div>
+    </div>
+  )
+}
+
 function MediaElement({ src, alt }: { src: string; alt: string }) {
   const srcString = typeof src === "string" ? src : ""
   const isVideo = srcString.includes(".mp4") || srcString.includes(".webm") || srcString.includes(".mov") || srcString.includes("/video/")
@@ -738,7 +955,7 @@ export function MarkdownRenderer({ content }: MarkdownRendererProps) {
             </blockquote>
           ),
           code: ({ className, children }) => {
-            const match = /language-(\w+)/.exec(className || "")
+            const match = /language-([\w-]+)/.exec(className || "")
             const isInline = !match && !className
 
             if (isInline) {
@@ -754,9 +971,19 @@ export function MarkdownRenderer({ content }: MarkdownRendererProps) {
               return <MermaidDiagram chart={codeString} />
             }
 
+            if (language === "flow-animation") {
+              return <FlowMatchingAnimation />
+            }
+
             return <CodeBlock language={language}>{codeString}</CodeBlock>
           },
           pre: ({ children, ...props }) => {
+            // For special block renderers, skip the pre wrapper entirely
+            const innerClassName = (children as any)?.props?.className || ''
+            if (/language-(mermaid|flow-animation)/.test(innerClassName)) {
+              return <>{children}</>
+            }
+
             const codeElement = (children as any)?.props?.children
             const codeString = typeof codeElement === "string" ? codeElement : String(codeElement || "")
 

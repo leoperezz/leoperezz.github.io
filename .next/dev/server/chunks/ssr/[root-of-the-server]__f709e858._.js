@@ -241,7 +241,7 @@ const blogPosts = [
         slug: "whole-body-control"
     },
     {
-        title: "Optimal Embodiment: Searching for the perfect robot to imitate humans",
+        title: "Optimal Embodiment: Searching for the perfect robot to imitate humans (In progress)",
         excerpt: "Exploring the relationship between robot morphology and human imitation—what makes a body ideal for learning from us.",
         date: "2024-03-20",
         slug: "optimal-embodiment"
