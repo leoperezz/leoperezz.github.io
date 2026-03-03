@@ -292,7 +292,7 @@ $$
 L_\pi(\omega)
 = \underbrace{\mathbb{E}_{s \sim \mathcal{D},\, a^\pi \sim \pi_\omega}
 \bigl[-Q_\phi(s, a^\pi)\bigr]}_{\text{Q loss}}
-+ \underbrace{\alpha\,L_{\text{Distill}}(\omega)}_{\text{“BC” loss}}.
++ \underbrace{\alpha\,L_{\text{Distill}}(\omega)}_{\text{BC loss}}.
 $$
 Intuitively, the first term pushes $\mu_\omega$ toward actions that receive high value under $Q_\phi$, while the second term keeps it close to the BC flow policy $\pi_\theta$. Importantly, **no gradients flow through the ODE solver**: the critic only ever sees one-step actions from $\mu_\omega$, so training reduces to ordinary reparameterized policy gradients.
 
