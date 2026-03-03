@@ -271,6 +271,8 @@ In summary they (1) Train $Q_\phi$ with offline RL (sparse reward, successful + 
 
 ## Flow Q-Learning
 
+![Flow Q Learning](https://res.cloudinary.com/dtpiuha91/image/upload/v1772554799/Screenshot_from_2026-03-03_11-19-47_deiwi8.png)
+
 Flow Q-Learning (FQL) proposes a very simple way to use flow-matching policies in offline RL **without ever backpropagating through the ODE solver**. Suppose we have a critic $Q_\phi(s,a)$ trained with a standard behavior-regularized actor–critic loss on a dataset $\mathcal{D}$ of transitions $(s,a,r,s')$. The most direct idea would be to “steer” the flow policy $\pi_\theta$ by replacing the usual behavior-cloning term with the flow-matching loss $L_{\text{Flow}}(\theta)$ defined above. The actor loss would be
 $$
 L_\pi(\theta)
@@ -300,6 +302,15 @@ Mathematically, the distillation loss can be interpreted as a kind of **Wasserst
 
 Putting everything together, Flow Q-Learning alternates three simple updates on minibatches from $\mathcal{D}$: (1) update the critic $Q_\phi$ with a standard TD loss using next actions $a' = \mu_\omega(s',z)$; (2) update the flow policy $\mu_\theta$ with the BC flow-matching loss $L_{\text{Flow}}(\theta)$ on demonstration actions $a$; and (3) update the one-step policy $\mu_\omega$ with the actor loss $L_\pi(\omega)$ above. At test time, we discard the expensive ODE-based flow and deploy only the **one-step policy** $\pi_\omega$, which preserves most of the expressivity of the original flow model while being cheap to evaluate and easy to train with RL.
 
+
+# Conclusion
+
+There are many directions one could take if the goal is to push RL with flow-matching VLA policies beyond the current state of the art. Recent work has started to directly tackle the RL/flow interface [[8]][[9]][[15]][[16]], and even to explore one-step generative models such as Drifting Models [[18]] that avoid iterative ODE integration altogether. My view is that these methods are largely complementary rather than mutually exclusive, and that the most promising future systems will likely combine ideas from several of them.
+
+The $\pi^{*}_{0.6}$ algorithm [[9]] offers a very stable way to extract a better policy from noisy data via a distributional value function over return bins and advantage conditioning. The main downside is computational: you effectively train a separate value model from scratch. A natural next step would be to reuse the representations of the underlying VLM/VLA and add an additional head—architecturally similar to the action expert—that acts as a critic. This is close in spirit to GR-RL [[8]], which already couples a large VLA policy with a distributional critic; however, its RL component is closer to progress-based data filtering and noise-space steering than to a full-fledged actor–critic update on the flow policy itself.
+
+Flow Q-Learning [[15]] takes an elegant step toward practical RL by introducing a one-step policy that distills the flow model and is trained with a Q-regularized objective, avoiding backpropagation through the ODE solver. As the authors note, this one-step parameterization can trade off some expressivity for simplicity. This is precisely where Drifting Models [[18]] and Adjoint Matching [[16]] become exciting: both offer ways to reason about distribution transport and credit assignment that *could* retain the richness of flow-based policies while enabling more direct RL-style updates, but they have not yet been thoroughly explored in the VLA setting. Investigating how to combine distributional critics, flow-based priors, and one-step or drifting-style generators for vision-language-action policies seems like a rich and very open research direction.
+
 ## References
 
 1. [Black, Kevin, et al. *"$\pi$0: A vision-language-action flow model for general robot control".* arXiv preprint arXiv:2410.24164, 2025.](https://doi.org/10.48550/arXiv.2410.24164)
@@ -319,3 +330,4 @@ Putting everything together, Flow Q-Learning alternates three simple updates on 
 15. [Park, Seohong, Qiyang Li, and Sergey Levine. *"Flow Q-Learning".* arXiv preprint arXiv:2502.02538, 2025.](https://doi.org/10.48550/arXiv.2502.02538)
 16. [Li, Qiyang, and Sergey Levine. *"Q-learning with Adjoint Matching".* arXiv preprint arXiv:2601.14234, 2026.](https://doi.org/10.48550/arXiv.2601.14234)
 17. [Fujimoto, Scott, and Shixiang Gu. *"A Minimalist Approach to Offline Reinforcement Learning".* Advances in Neural Information Processing Systems 34, 2021.](https://arxiv.org/abs/2106.06860)
+18. [Deng, Mingyang, et al. *"Generative Modeling via Drifting".* arXiv preprint arXiv:2602.04770, 2026.](https://doi.org/10.48550/arXiv.2602.04770)
