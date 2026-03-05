@@ -24,7 +24,6 @@ export function Navbar() {
     { name: "About", href: "/" },
     { name: "Blogs", href: "/blogs" },
     { name: "Projects", href: "/projects" },
-    { name: "Notes", href: "/notes" },
   ]
 
   return (

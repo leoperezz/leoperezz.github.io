@@ -235,8 +235,26 @@ var __TURBOPACK__imported__module__$5b$externals$5d2f$path__$5b$external$5d$__$2
 ;
 const blogPosts = [
     {
+        title: "Whole Body Control: The necessary step for truly useful robots",
+        excerpt: "Why coordinating the full body, not just the arms, is essential for robots that can actually help us in the real world.",
+        date: "2024-03-25",
+        slug: "whole-body-control"
+    },
+    {
+        title: "Optimal Embodiment: Searching for the perfect robot to imitate humans (In progress)",
+        excerpt: "Exploring the relationship between robot morphology and human imitation—what makes a body ideal for learning from us.",
+        date: "2024-03-20",
+        slug: "optimal-embodiment"
+    },
+    {
+        title: "Reinforcement Learning for VLAs: Overview and Thoughts",
+        excerpt: "An overview of reinforcement learning methods for Vision-Language-Action models, plus personal reflections on the field.",
+        date: "2024-03-15",
+        slug: "reinforcement-learning-vlas"
+    },
+    {
         title: "Action Chunking Transformer",
-        excerpt: "Explaining the Action Chunking Transformer algorithm and its applications in reinforcement learning.",
+        excerpt: "Paper Review of one of the most important robotics papers of recent years.",
         date: "2024-02-20",
         slug: "action-chunking-transformer"
     },
@@ -270,6 +288,18 @@ const projects = [
         link: "https://www.nonhuman.site",
         linkLabel: "View Website",
         slug: "nonhuman"
+    },
+    {
+        title: "Robonet",
+        description: "The internet of Robotics. Robonet is a startup focused on scaling full-body datasets to enable whole-body policies in robots.",
+        tags: [
+            "Robotics",
+            "Embodied AI",
+            "Startup"
+        ],
+        link: "https://robonet.nonhuman.site",
+        linkLabel: "View Website",
+        slug: "robonet"
     }
 ];
 const notes = [
