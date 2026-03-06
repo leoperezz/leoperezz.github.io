@@ -1,1 +1,11 @@
-{"version":4,"routes":{"/blogs/whole-body-control":{},"/blogs/optimal-embodiment":{},"/blogs/reinforcement-learning-vlas":{},"/blogs/action-chunking-transformer":{},"/blogs/proximal-policy-optimization":{},"/blogs/policy-gradient-theorem":{},"/blogs/attention-mechanism-i":{},"/projects/nonhuman":{},"/projects/robonet":{}},"dynamicRoutes":{"/blogs/[slug]":{"dataRoute":null,"dataRouteRegex":null,"fallback":null,"fallbackRevalidate":false,"fallbackSourceRoute":"/blogs/[slug]","routeRegex":"^\\/blogs\\/([^/]+?)(?:\\/)?$","allowHeader":[]},"/projects/[slug]":{"dataRoute":null,"dataRouteRegex":null,"fallback":null,"fallbackRevalidate":false,"fallbackSourceRoute":"/projects/[slug]","routeRegex":"^\\/projects\\/([^/]+?)(?:\\/)?$","allowHeader":[]}},"notFoundRoutes":[],"preview":{"previewModeId":"1fb863c9ec0311fb3cf3c6a602a3de2b","previewModeSigningKey":"4c1313e6714680aa0032d735137a611f49e67dad07bc87e0bd125a936e329086","previewModeEncryptionKey":"cee43a86101a9cc7713c75edf02ef41ecfb9402785c2613a31adb150b927dd03"}}
+{
+  "version": 4,
+  "routes": {},
+  "dynamicRoutes": {},
+  "notFoundRoutes": [],
+  "preview": {
+    "previewModeId": "4b2452cf0f47e2a298aefa5802ca4f69",
+    "previewModeSigningKey": "efff36ae602bb597544330b14ca2afb6723fc74ac163b08ce54dd7c73382aa18",
+    "previewModeEncryptionKey": "89b76056a1c7d6a6ec1e499f6fb44cbeb2d3c236508cea731ba8ac369f0c5160"
+  }
+}

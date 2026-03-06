@@ -3,18 +3,23 @@
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { useTheme } from "next-themes"
-import { Sun, Moon } from "lucide-react"
+import { Sun, Moon, Menu, X } from "lucide-react"
 import { useEffect, useState } from "react"
 import { LatexLogo } from "./latex-logo"
 
 export function Navbar() {
   const { theme, setTheme } = useTheme()
   const [mounted, setMounted] = useState(false)
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const pathname = usePathname()
 
   useEffect(() => {
     setMounted(true)
   }, [])
+
+  useEffect(() => {
+    setMobileMenuOpen(false)
+  }, [pathname])
 
   const toggleTheme = () => {
     setTheme(theme === "dark" ? "light" : "dark")
@@ -37,7 +42,7 @@ export function Navbar() {
           <LatexLogo />
         </Link>
 
-        <div className="flex items-center gap-8">
+        <div className="flex items-center gap-4 sm:gap-8">
           <div className="hidden items-center gap-6 sm:flex">
             {navItems.map((item) => (
               <Link
@@ -53,6 +58,15 @@ export function Navbar() {
           </div>
 
           <button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="rounded-md p-2 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground sm:hidden"
+            aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
+            aria-expanded={mobileMenuOpen}
+          >
+            {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </button>
+
+          <button
             onClick={toggleTheme}
             className="rounded-md p-2 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
             aria-label="Toggle theme"
@@ -61,6 +75,25 @@ export function Navbar() {
           </button>
         </div>
       </nav>
+
+      {mobileMenuOpen && (
+        <div className="border-t border-border/40 bg-background/95 backdrop-blur-sm sm:hidden">
+          <div className="mx-auto flex max-w-4xl flex-col gap-1 px-6 py-4">
+            {navItems.map((item) => (
+              <Link
+                key={item.name}
+                href={item.href}
+                onClick={() => setMobileMenuOpen(false)}
+                className={`rounded-md px-3 py-2 font-sans text-sm font-medium transition-colors hover:bg-muted ${
+                  pathname === item.href ? "text-foreground bg-muted/50" : "text-muted-foreground"
+                }`}
+              >
+                {item.name}
+              </Link>
+            ))}
+          </div>
+        </div>
+      )}
     </header>
   )
 }

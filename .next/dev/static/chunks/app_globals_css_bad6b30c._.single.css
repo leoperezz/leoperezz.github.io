@@ -737,10 +737,6 @@
     gap: calc(var(--spacing) * 6);
   }
 
-  .gap-8 {
-    gap: calc(var(--spacing) * 8);
-  }
-
   .gap-12 {
     gap: calc(var(--spacing) * 12);
   }
@@ -911,6 +907,16 @@
   @supports (color: color-mix(in lab, red, red)) {
     .bg-background\/80 {
       background-color: color-mix(in oklab, var(--background) 80%, transparent);
+    }
+  }
+
+  .bg-background\/95 {
+    background-color: var(--background);
+  }
+
+  @supports (color: color-mix(in lab, red, red)) {
+    .bg-background\/95 {
+      background-color: color-mix(in oklab, var(--background) 95%, transparent);
     }
   }
 
@@ -1363,6 +1369,12 @@
   }
 
   @media (min-width: 40rem) {
+    .sm\:hidden {
+      display: none;
+    }
+  }
+
+  @media (min-width: 40rem) {
     .sm\:flex-row {
       flex-direction: row;
     }
@@ -1377,6 +1389,12 @@
   @media (min-width: 40rem) {
     .sm\:justify-between {
       justify-content: space-between;
+    }
+  }
+
+  @media (min-width: 40rem) {
+    .sm\:gap-8 {
+      gap: calc(var(--spacing) * 8);
     }
   }
 
