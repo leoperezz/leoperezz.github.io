@@ -22,9 +22,9 @@ const jetbrainsMono = JetBrains_Mono({
 })
 
 export const metadata: Metadata = {
-  title: "Leonardo Pérez | Mathematics & Embodied AI",
-  description: "Undergraduate Researcher at PUCP exploring the foundations of Robotics and AI through Mathematics.",
-    generator: 'v0.app'
+  title: "blog",
+  description: "Personal writing.",
+  generator: "v0.app",
 }
 
 export default function RootLayout({

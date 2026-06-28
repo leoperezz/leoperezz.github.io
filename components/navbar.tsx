@@ -5,8 +5,6 @@ import { usePathname } from "next/navigation"
 import { useTheme } from "next-themes"
 import { Sun, Moon, Menu, X } from "lucide-react"
 import { useEffect, useState } from "react"
-import { LatexLogo } from "./latex-logo"
-
 export function Navbar() {
   const { theme, setTheme } = useTheme()
   const [mounted, setMounted] = useState(false)
@@ -32,15 +30,7 @@ export function Navbar() {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/80 backdrop-blur-sm">
-      <nav className="mx-auto flex max-w-4xl items-center justify-between px-6 py-4">
-        <Link
-          href="/"
-          className="font-mono text-foreground transition-colors hover:text-foreground/70"
-          title="Leonardo Pérez"
-        >
-          <LatexLogo />
-        </Link>
-
+      <nav className="mx-auto flex max-w-4xl items-center justify-end px-6 py-4">
         <div className="flex items-center gap-4 sm:gap-8">
           <div className="hidden items-center gap-6 sm:flex">
             {navItems.map((item) => (

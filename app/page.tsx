@@ -8,37 +8,35 @@ export default function Home() {
       <Navbar />
       <main className="flex-1">
         <section className="mx-auto max-w-4xl px-6 py-20">
-          <h1 className="font-sans text-3xl font-semibold tracking-tight text-foreground">Leonardo Pérez</h1>
-
-          <div className="mt-8 flex flex-col gap-8 sm:flex-row sm:items-start sm:gap-10">
+          <div className="flex flex-col gap-8 sm:flex-row sm:items-start sm:gap-10">
             <div className="flex-1 space-y-6">
-              <p className="font-serif text-base leading-relaxed text-muted-foreground">
-                Hi, I'm Leonardo. I'm currently studying mathematics at the Pontificia Universidad Católica del Perú
+              <p className="font-serif text-base leading-relaxed text-foreground">
+                Hi, I'm Leo Perez. I'm currently studying mathematics at the Pontificia Universidad Católica del Perú
                 (PUCP), with a deep interest in the theoretical foundations of artificial intelligence and robotics.
               </p>
 
-              <p className="font-serif text-base leading-relaxed text-muted-foreground">
+              <p className="font-serif text-base leading-relaxed text-foreground">
               I am interested in understanding how a single model can acquire skills as different as doing laundry and playing table tennis. While these tasks require vastly different capabilities, humans perform both seamlessly using the same brain.
               </p>
 
-              <p className="font-serif text-base leading-relaxed text-foreground font-medium">
+              <p className="font-serif text-base leading-relaxed text-foreground">
                 I'm currently founding one of the first Embodied AI laboratories in Latin America:{" "}
                 <a
                   href="https://www.nonhuman.site"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="underline underline-offset-4 hover:text-muted-foreground transition-colors"
+                  className="underline underline-offset-4 hover:text-foreground/70 transition-colors"
                 >
                   NONHUMAN
                 </a>
                 —aiming to advance research in embodied artificial intelligence across the region.
               </p>
 
-              <p className="font-serif text-base leading-relaxed text-muted-foreground">
+              <p className="font-serif text-base leading-relaxed text-foreground">
                 I also enjoy writing technical blogs—{" "}
                 <a
                   href="/blogs"
-                  className="text-foreground underline underline-offset-4 hover:text-muted-foreground transition-colors"
+                  className="underline underline-offset-4 hover:text-foreground/70 transition-colors"
                 >
                   check them out here
                 </a>
@@ -59,14 +57,14 @@ export default function Home() {
           </div>
 
           <div className="mt-12">
-            <h2 className="font-sans text-lg font-medium text-foreground mb-4">Recent News</h2>
-            <ul className="list-disc space-y-2 pl-5 font-serif text-base leading-relaxed text-muted-foreground">
+            <h2 className="font-sans text-lg text-foreground mb-4">Recent News</h2>
+            <ul className="list-disc space-y-2 pl-5 font-serif text-base leading-relaxed text-foreground">
               <li>
                 <a
                   href="https://www.nonhuman.site"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-foreground underline underline-offset-4 hover:text-muted-foreground transition-colors"
+                  className="underline underline-offset-4 hover:text-foreground/70 transition-colors"
                 >
                   NONHUMAN
                 </a>{" "}
@@ -76,13 +74,13 @@ export default function Home() {
           </div>
 
           <div className="mt-12">
-            <h2 className="font-sans text-lg font-medium text-foreground mb-4">Get in Touch</h2>
-            <p className="font-serif text-base leading-relaxed text-muted-foreground">
+            <h2 className="font-sans text-lg text-foreground mb-4">Get in Touch</h2>
+            <p className="font-serif text-base leading-relaxed text-foreground">
               I'm always open to meeting people passionate about AI, robotics, and mathematics. Whether you're
               interested in collaboration, research discussions, or just want to connect—feel free to reach out via{" "}
               <a
                 href="mailto:leonardo.perezn@pucp.edu.pe"
-                className="text-foreground underline underline-offset-4 hover:text-muted-foreground transition-colors"
+                className="underline underline-offset-4 hover:text-foreground/70 transition-colors"
               >
                 email
               </a>{" "}
@@ -91,7 +89,7 @@ export default function Home() {
                 href="https://x.com/keverwww"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-foreground underline underline-offset-4 hover:text-muted-foreground transition-colors"
+                className="underline underline-offset-4 hover:text-foreground/70 transition-colors"
               >
                 X (Twitter)
               </a>

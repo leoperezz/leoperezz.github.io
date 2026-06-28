@@ -1,131 +1,29 @@
-[00:00:01.102] Server  LOG      ✓ Ready in 747ms
-[00:00:03.805] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:00:04.693] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:00:04.693] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
-[00:00:04.693] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1781495472306} /_vercel/insights/view
-[00:00:14.465] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:00:14.966] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:00:14.967] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
-[00:00:14.967] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1781495482579} /_vercel/insights/view
-[00:00:20.994] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/blogs color: rgb(120, 120, 120) color: inherit {"dp":"/blogs","o":"http://localhost:3000/blogs","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1781495488606} /_vercel/insights/view
-[00:00:25.165] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/projects color: rgb(120, 120, 120) color: inherit {"dp":"/projects","o":"http://localhost:3000/projects","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1781495492772} /_vercel/insights/view
-[00:00:30.729] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1781495498337} /_vercel/insights/view
-[00:05:01.623] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/blogs color: rgb(120, 120, 120) color: inherit {"dp":"/blogs","o":"http://localhost:3000/blogs","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1781495769232} /_vercel/insights/view
-[00:05:04.006] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/projects color: rgb(120, 120, 120) color: inherit {"dp":"/projects","o":"http://localhost:3000/projects","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1781495771614} /_vercel/insights/view
-[00:05:05.263] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1781495772873} /_vercel/insights/view
-[00:05:45.556] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/projects color: rgb(120, 120, 120) color: inherit {"dp":"/projects","o":"http://localhost:3000/projects","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1781495813166} /_vercel/insights/view
-[00:05:47.925] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1781495815535} /_vercel/insights/view
-[00:07:16.342] Server  LOG      ✓ Compiled in 85ms
-[00:07:16.457] Browser ERROR   ./app/page.tsx:85:19
-Parsing ecmascript source code failed
-  83 |             </div>
-  84 |           </div>
-> 85 |         </section>
-     |                   ^
-> 86 |       </main>
-     | ^^^^^^^
-  87 |       <Footer />
-  88 |     </div>
-  89 |   )
-
-Expected '</', got 'jsx text (
-      )'
-[00:07:17.292] Browser ERROR   ./app/page.tsx:85:19
-Parsing ecmascript source code failed
-  83 |             </div>
-  84 |           </div>
-> 85 |         </section>
-     |                   ^
-> 86 |       </main>
-     | ^^^^^^^
-  87 |       <Footer />
-  88 |     </div>
-  89 |   )
-
-Expected '</', got 'jsx text (
-      )'
-[00:07:20.100] Browser ERROR   ./app/page.tsx:75:17
-Parsing ecmascript source code failed
-  73 |               </p>
-  74 |             </div>
-> 75 |           </div>
-     |                 ^
-> 76 |         </section>
-     | ^^^^^^^^^
-  77 |       </main>
-  78 |       <Footer />
-  79 |     </div>
-
-Expected '</', got 'jsx text (
-        )'
-[00:07:20.558] Browser ERROR   ./app/page.tsx:75:17
-Parsing ecmascript source code failed
-  73 |               </p>
-  74 |             </div>
-> 75 |           </div>
-     |                 ^
-> 76 |         </section>
-     | ^^^^^^^^^
-  77 |       </main>
-  78 |       <Footer />
-  79 |     </div>
-
-Expected '</', got 'jsx text (
-        )'
-[00:07:21.699] Server  LOG      ✓ Compiled in 26ms
-[00:07:21.764] Browser ERROR   ./app/page.tsx:75:17
-Parsing ecmascript source code failed
-  73 |               </p>
-  74 |             </div>
-> 75 |           </div>
-     |                 ^
-> 76 |         </section>
-     | ^^^^^^^^^
-  77 |       </main>
-  78 |       <Footer />
-  79 |     </div>
-
-Expected '</', got 'jsx text (
-        )'
-[00:07:21.765] Browser ERROR   ./app/page.tsx:75:17
-Parsing ecmascript source code failed
-  73 |               </p>
-  74 |             </div>
-> 75 |           </div>
-     |                 ^
-> 76 |         </section>
-     | ^^^^^^^^^
-  77 |       </main>
-  78 |       <Footer />
-  79 |     </div>
-
-Expected '</', got 'jsx text (
-        )'
-[00:16:46.068] Server  LOG      ✓ Compiled in 27ms
-[00:16:46.567] Server  LOG      ✓ Compiled in 46ms
-[00:18:28.904] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:18:29.046] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:18:29.046] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/blogs","route":"/blogs"}
-[00:18:29.046] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/blogs color: rgb(120, 120, 120) color: inherit {"dp":"/blogs","o":"http://localhost:3000/blogs","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1781496576659} /_vercel/insights/view
-[00:18:31.286] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:18:31.422] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:18:31.422] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
-[00:18:31.422] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1781496579035} /_vercel/insights/view
-[00:19:48.998] Server  ERROR    ⨯ ReferenceError: Twitter is not defined
-[00:19:49.024] Server  ERROR    ⨯ ReferenceError: Twitter is not defined
-[00:19:49.055] Server  ERROR    ⨯ ReferenceError: Twitter is not defined
-[00:19:49.075] Server  ERROR    ⨯ ReferenceError: Twitter is not defined
-[00:19:49.204] Browser ERROR   uncaughtError: ReferenceError: Twitter is not defined
-[00:19:49.205] Browser ERROR   uncaughtError: ReferenceError: Twitter is not defined
-[00:19:49.692] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:19:49.793] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:19:49.841] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:19:49.841] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
-[00:19:49.841] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1781496657454} /_vercel/insights/view
-[00:19:49.951] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:19:49.951] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
-[00:19:49.951] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1781496657565} /_vercel/insights/view
-[00:21:28.358] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/blogs color: rgb(120, 120, 120) color: inherit {"dp":"/blogs","o":"http://localhost:3000/blogs","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1781496755969} /_vercel/insights/view
-[00:21:33.414] Server  LOG      ○ Compiling /blogs/[slug] ...
-[00:21:34.730] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/blogs/whole-body-control color: rgb(120, 120, 120) color: inherit {"dp":"/blogs/[slug]","o":"http://localhost:3000/blogs/whole-body-control","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1781496762339} /_vercel/insights/view
-[00:21:59.032] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/blogs color: rgb(120, 120, 120) color: inherit {"dp":"/blogs","o":"http://localhost:3000/blogs","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1781496786641} /_vercel/insights/view
+[00:00:00.928] Server  LOG      ✓ Ready in 643ms
+[00:00:03.563] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:03.737] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:00:03.737] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:00:03.737] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1782621074311} /_vercel/insights/view
+[00:01:02.415] Server  LOG      ✓ Compiled in 40ms
+[00:01:02.550] Browser ERROR   uncaughtError: ReferenceError: LatexLogo is not defined
+[00:01:02.977] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[00:01:03.062] Server  LOG      ✓ Compiled in 33ms
+[00:01:03.110] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1782621133661} /_vercel/insights/view
+[00:01:03.212] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:01:03.353] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:01:03.353] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:01:03.353] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1782621133927} /_vercel/insights/view
+[00:01:14.703] Server  LOG      ✓ Compiled in 57ms
+[00:01:27.662] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/blogs color: rgb(120, 120, 120) color: inherit {"dp":"/blogs","o":"http://localhost:3000/blogs","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1782621158235} /_vercel/insights/view
+[00:02:25.848] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1782621216420} /_vercel/insights/view
+[00:02:58.191] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:02:58.801] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:02:58.801] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:02:58.801] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1782621249375} /_vercel/insights/view
+[00:05:22.817] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/blogs color: rgb(120, 120, 120) color: inherit {"dp":"/blogs","o":"http://localhost:3000/blogs","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1782621393390} /_vercel/insights/view
+[00:05:26.680] Server  LOG      ○ Compiling /blogs/[slug] ...
+[00:05:27.920] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/blogs/whole-body-control color: rgb(120, 120, 120) color: inherit {"dp":"/blogs/[slug]","o":"http://localhost:3000/blogs/whole-body-control","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1782621398489} /_vercel/insights/view
+[00:05:31.774] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/blogs color: rgb(120, 120, 120) color: inherit {"dp":"/blogs","o":"http://localhost:3000/blogs","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1782621402346} /_vercel/insights/view
+[00:05:33.271] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1782621403842} /_vercel/insights/view
+[00:06:50.608] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/blogs color: rgb(120, 120, 120) color: inherit {"dp":"/blogs","o":"http://localhost:3000/blogs","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1782621481180} /_vercel/insights/view
+[00:06:59.077] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/blogs/reinforcement-learning-vlas color: rgb(120, 120, 120) color: inherit {"dp":"/blogs/[slug]","o":"http://localhost:3000/blogs/reinforcement-learning-vlas","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1782621489636} /_vercel/insights/view
+[00:07:10.766] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1782621501340} /_vercel/insights/view
