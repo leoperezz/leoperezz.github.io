@@ -43,48 +43,48 @@ export const blogPosts: BlogPost[] = [
     title: "Whole Body Control: The necessary step for truly useful robots",
     excerpt:
       "Why coordinating the full body, not just the arms, is essential for robots that can actually help us in the real world.",
-    date: "2024-03-25",
+    date: "2026-03-25",
     slug: "whole-body-control",
   },
   {
     title: "Optimal Embodiment: Searching for the perfect robot to imitate humans (In progress)",
     excerpt:
       "Exploring the relationship between robot morphology and human imitation—what makes a body ideal for learning from us.",
-    date: "2024-03-20",
+    date: "2026-01-05",
     slug: "optimal-embodiment",
   },
   {
     title: "Reinforcement Learning for VLAs: Overview and Thoughts",
     excerpt:
       "An overview of reinforcement learning methods for Vision-Language-Action models, plus personal reflections on the field.",
-    date: "2024-03-15",
+    date: "2025-10-15",
     slug: "reinforcement-learning-vlas",
   },
   {
     title: "Action Chunking Transformer",
     excerpt:
       "Paper Review of one of the most important robotics papers of recent years.",
-    date: "2024-02-20",
+    date: "2025-03-10",
     slug: "action-chunking-transformer",
   },
   {
     title: "Proximal Policy Optimization",
     excerpt:
       "Explaining the Proximal Policy Optimization algorithm and its applications in reinforcement learning.",
-    date: "2024-02-12",
+    date: "2025-02-22",
     slug: "proximal-policy-optimization",
   },
   {
     title: "Policy Gradient Theorem",
     excerpt:
       "Proof of the policy gradient theorem in reinforcement learning and a little analysis.",
-    date: "2024-02-7",
+    date: "2025-02-20",
     slug: "policy-gradient-theorem",
   },
   {
     title: "Attention Mechanism I",
     excerpt: "Exploring the attention mechanism in neural networks, and its applications in natural language processing and computer vision. Focusing on the mechanism of attention in 'Attention Is All You Need' paper.",
-    date: "2024-01-12",
+    date: "2025-02-12",
     slug: "attention-mechanism-i",
   },
 ]

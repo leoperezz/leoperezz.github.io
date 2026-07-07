@@ -1630,12 +1630,6 @@
   }
 
   @media (hover: hover) {
-    .hover\:text-muted-foreground:hover {
-      color: var(--muted-foreground);
-    }
-  }
-
-  @media (hover: hover) {
     .hover\:text-primary\/70:hover {
       color: var(--primary);
     }
@@ -1644,12 +1638,6 @@
       .hover\:text-primary\/70:hover {
         color: color-mix(in oklab, var(--primary) 70%, transparent);
       }
-    }
-  }
-
-  @media (hover: hover) {
-    .hover\:opacity-70:hover {
-      opacity: .7;
     }
   }
 
