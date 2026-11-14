@@ -2,6 +2,66 @@
 
 A personal academic website built with Next.js, featuring a markdown-based content system with support for LaTeX equations, code syntax highlighting, Mermaid diagrams, images, and videos.
 
+## Ejecutar el proyecto y publicarlo
+
+Las dependencias se instalan dentro de `node_modules/`. Node.js y npm deben estar instalados en el equipo; no se suben al repositorio. Para nuevas instalaciones se recomienda Node.js 22 (ver `.nvmrc`).
+
+```bash
+cd /home/leonardo/personal-blog
+# Si utilizas nvm: nvm install && nvm use
+npm ci
+npm run dev
+```
+
+Abre http://localhost:3000. Para detener el servidor, pulsa Ctrl+C.
+Si las dependencias ya están instaladas, basta con ejecutar `npm run dev`.
+
+### Publicar en https://leoperezz.github.io
+
+Esta configuración está preparada para el dominio raíz `leoperezz.github.io`.
+GitHub exige que un sitio personal use un repositorio llamado exactamente
+`USUARIO.github.io`. El repositorio actual se llama `personal-blog`.
+
+1. En GitHub, abre el repositorio `leoperezz/personal-blog`.
+2. En **Settings → General → Repository name**, cambia su nombre a
+   `leoperezz.github.io`. Si ese repositorio ya existe, elige primero dónde
+   conservar el sitio existente; no lo sobrescribas.
+3. En tu terminal, actualiza la dirección del repositorio:
+
+   ```bash
+   git remote set-url origin git@github.com:leoperezz/leoperezz.github.io.git
+   ```
+
+4. En GitHub, entra en **Settings → Pages → Build and deployment → Source**
+   y selecciona **GitHub Actions**. Con GitHub Free, utiliza un repositorio público.
+5. Comprueba la compilación y sube los archivos preparados:
+
+   ```bash
+   npm run build
+   git add README.md next.config.mjs package-lock.json .nvmrc .github/workflows/deploy-pages.yml
+   git commit -m "Prepare GitHub Pages deployment"
+   git push origin main
+   ```
+
+6. En la pestaña **Actions**, espera a que **Deploy to GitHub Pages** termine
+   correctamente. Si no se ejecuta, selecciónalo y pulsa **Run workflow** en `main`.
+7. Visita https://leoperezz.github.io. La publicación puede tardar unos minutos.
+
+Cada nuevo `git push` a `main` reconstruye y publica el sitio automáticamente.
+El workflow instala las dependencias con `npm ci`, ejecuta `npm run build` y
+publica la carpeta `out/`. No subas `node_modules/`, `.next/` ni `out/` a Git.
+La exportación estática no utiliza `npm start`; ese comando requiere un servidor
+Next.js y no corresponde a GitHub Pages.
+
+Conservar el nombre `personal-blog` produciría una URL del tipo
+`https://leoperezz.github.io/personal-blog/` y requeriría configurar `basePath`
+y adaptar las rutas de las imágenes. Para el dominio raíz pedido, sigue los
+pasos anteriores.
+
+Documentación oficial: [GitHub Pages](https://docs.github.com/en/pages/quickstart),
+[workflows de Pages](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages)
+y [exportación estática de Next.js](https://nextjs.org/docs/app/guides/static-exports).
+
 ## Project Structure
 
 \`\`\`
