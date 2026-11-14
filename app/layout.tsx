@@ -1,23 +1,28 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Inter, Merriweather, JetBrains_Mono } from "next/font/google"
+import localFont from "next/font/local"
 import { Analytics } from "@vercel/analytics/next"
 import { ThemeProvider } from "@/components/theme-provider"
 import "./globals.css"
 
-const inter = Inter({
-  subsets: ["latin"],
+const inter = localFont({
+  src: "../node_modules/@fontsource-variable/inter/files/inter-latin-wght-normal.woff2",
+  weight: "100 900",
+  display: "swap",
   variable: "--font-inter",
 })
 
-const merriweather = Merriweather({
-  subsets: ["latin"],
-  weight: ["300", "400", "700"],
+const merriweather = localFont({
+  src: "../node_modules/@fontsource-variable/merriweather/files/merriweather-latin-wght-normal.woff2",
+  weight: "300 900",
+  display: "swap",
   variable: "--font-merriweather",
 })
 
-const jetbrainsMono = JetBrains_Mono({
-  subsets: ["latin"],
+const jetbrainsMono = localFont({
+  src: "../node_modules/@fontsource-variable/jetbrains-mono/files/jetbrains-mono-latin-wght-normal.woff2",
+  weight: "100 800",
+  display: "swap",
   variable: "--font-jetbrains",
 })
 

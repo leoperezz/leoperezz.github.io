@@ -80,9 +80,9 @@
 }
 
 @theme inline {
-  --font-sans: "Inter", "Inter Fallback", system-ui, sans-serif;
-  --font-serif: "Merriweather", "Georgia", serif;
-  --font-mono: "JetBrains Mono", "Geist Mono", monospace;
+  --font-sans: var(--font-inter), system-ui, sans-serif;
+  --font-serif: var(--font-merriweather), "Georgia", serif;
+  --font-mono: var(--font-jetbrains), "Geist Mono", monospace;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
