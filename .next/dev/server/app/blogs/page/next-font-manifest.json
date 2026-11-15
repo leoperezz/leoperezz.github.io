@@ -2,9 +2,9 @@
   "pages": {},
   "app": {
     "[project]/app/blogs/page": [
-      "static/media/83afe278b6a6bb3c-s.p.3a6ba036.woff2",
-      "static/media/248e1dc0efc99276-s.p.8a6b2436.woff2",
-      "static/media/70bc3e132a0a741e-s.p.15008bfb.woff2"
+      "static/media/inter_latin_wght_normal-s.p.c757f81b.woff2",
+      "static/media/merriweather_latin_wght_normal-s.p.f34d28dc.woff2",
+      "static/media/jetbrains_mono_latin_wght_normal-s.p.1afd078f.woff2"
     ]
   },
   "appUsingSizeAdjust": true,

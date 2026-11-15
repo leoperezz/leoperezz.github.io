@@ -27,8 +27,8 @@ const jetbrainsMono = localFont({
 })
 
 export const metadata: Metadata = {
-  title: "blog",
-  description: "Personal writing.",
+  title: "Leonardo Pérez",
+  description: "Research in reinforcement learning, world models, and robotics. Co-founder of Mu Robotics.",
   generator: "v0.app",
 }
 
